@@ -1,2 +1,3 @@
 # schoolie-gui
-A school agenda planner app.
+
+A school agenda planner application.
