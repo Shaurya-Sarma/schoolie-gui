@@ -1,0 +1,76 @@
+:host {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+}
+
+.login-page {
+  &__art {
+    height: 100vh;
+  }
+  &__login-container {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    justify-content: center;
+  }
+  &__form-label {
+    font-weight: 500;
+  }
+  &__form-field {
+    display: block;
+    width: 30vw;
+  }
+  &__form-icon {
+    vertical-align: bottom;
+    margin-right: 6px;
+    color: #828282;
+  }
+  &__title {
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    font-size: 2.4rem;
+    margin: 40px 0;
+  }
+  &__subtitle {
+    width: 30vw;
+    margin: 0 0 30px 0;
+    text-align: right;
+    &-link {
+      font-weight: 500;
+      font-size: 0.85rem;
+      text-decoration: none;
+      color: #828282;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+  &__btn {
+    background: linear-gradient(to right, #028cbc, #00cdda);
+    border-radius: 30px;
+    text-transform: uppercase;
+    font-size: 1.05em;
+    margin-bottom: 26px;
+    padding: 2px 0;
+    width: 30vw;
+    color: #fff;
+    transition: 0.5s;
+    &:hover {
+      filter: saturate(130%);
+    }
+  }
+
+  &__signup {
+    color: #828282;
+    font-size: 0.9rem;
+    &-link {
+      color: #ff3c3c;
+      font-weight: 500;
+      text-decoration: none;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
