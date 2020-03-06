@@ -1,23 +1,36 @@
 <div class="register-page__register-container">
   <h1 class="register-page__title">Sign Up?</h1>
-  <form class="register-page__form">
+  <form [formGroup]="registerForm" class="register-page__form">
     <mat-form-field class="register-page__form-field">
       <mat-label class="register-page__form-label">Email</mat-label>
       <mat-icon matPrefix class="register-page__form-icon">email</mat-icon>
-      <input matInput type="email" />
+      <input matInput type="email" formControlName="email" />
+      <mat-error *ngIf="email.invalid && email.touched">
+        Please enter a valid email address
+      </mat-error>
     </mat-form-field>
     <mat-form-field class="register-page__form-field">
       <mat-label class="register-page__form-label">Password</mat-label>
       <mat-icon matPrefix class="register-page__form-icon">lock</mat-icon>
-      <input matInput type="password" />
+      <input matInput type="password" formControlName="password" />
+      <mat-error *ngIf="password.invalid && password.touched">
+        Must be 6-20 characters
+        <br />
+        Must have an uppercase, lowercase, and number
+      </mat-error>
     </mat-form-field>
     <mat-form-field class="register-page__form-field">
       <mat-label class="register-page__form-label">Confirm Password</mat-label>
       <mat-icon matPrefix class="register-page__form-icon">lock_open</mat-icon>
-      <input matInput type="password" />
+      <input matInput type="password" formControlName="confirm" />
     </mat-form-field>
   </form>
-  <button class="register-page__btn" mat-flat-button color="primary">
+  <button
+    class="register-page__btn"
+    mat-flat-button
+    color="primary"
+    [disabled]="registerForm.invalid"
+  >
     register
   </button>
   <p class="register-page__login">

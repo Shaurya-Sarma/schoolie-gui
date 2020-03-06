@@ -6,12 +6,13 @@ import { AppComponent } from "./app.component";
 import { LoginComponent } from "./login/login.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
+import { ReactiveFormsModule } from "@angular/forms";
 import { MatButtonModule } from "@angular/material/button";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 
 import { MatIconModule } from "@angular/material/icon";
-import { RegisterComponent } from './register/register.component';
+import { RegisterComponent } from "./register/register.component";
 
 @NgModule({
   declarations: [AppComponent, LoginComponent, RegisterComponent],
@@ -19,6 +20,7 @@ import { RegisterComponent } from './register/register.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,

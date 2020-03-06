@@ -20,6 +20,7 @@
   &__form-field {
     display: block;
     width: 30vw;
+    margin-bottom: 25px;
   }
   &__form-label {
     font-weight: 500;
@@ -41,6 +42,12 @@
     transition: 0.5s;
     &:hover {
       filter: saturate(130%);
+    }
+    &:disabled {
+      color: #fff;
+      &:hover {
+        filter: none;
+      }
     }
   }
   &__login {
