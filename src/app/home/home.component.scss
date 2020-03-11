@@ -1,5 +1,45 @@
 .home-page {
+  &__home-container {
+    margin: 0 40px;
+  }
+  &__header {
+    margin: 40px 0;
+  }
+  &__title {
+    font-size: 2.5rem;
+    margin: 0;
+    font-weight: 500;
+  }
+  &__date {
+    margin: 0;
+    font-weight: 500;
+  }
+  &__navbar {
+    display: flex;
+    position: absolute;
+    flex-direction: row;
+    top: 0;
+    right: 0;
+    margin: 40px;
+  }
+  &__heading {
+    text-transform: uppercase;
+    color: #777777;
+    font-weight: 550;
+    display: flex;
+    align-items: center;
+    margin-top: 110px;
+    padding: 2px;
+    font-size: 1rem;
+    border-bottom: 2px solid #777777;
+  }
+
   &__icon {
-    height: 24px;
+    height: 40px;
+    margin-left: 40px;
+    transition: ease-in 0.5s;
+    &:hover {
+      color: #2f80ed; //! Won't work since icons are svg | need to change using material or fontawesome
+    }
   }
 }
