@@ -13,9 +13,10 @@ import { MatInputModule } from "@angular/material/input";
 
 import { MatIconModule } from "@angular/material/icon";
 import { RegisterComponent } from "./register/register.component";
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, RegisterComponent],
+  declarations: [AppComponent, LoginComponent, RegisterComponent, HomeComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
