@@ -13,6 +13,8 @@
   &__date {
     margin: 0;
     font-weight: 500;
+    margin-top: 5px;
+    font-size: 1.1rem;
   }
   &__navbar {
     display: flex;
@@ -30,7 +32,7 @@
     align-items: center;
     margin-top: 110px;
     padding: 2px;
-    font-size: 1rem;
+    font-size: 1.1rem;
     border-bottom: 2px solid #777777;
   }
 
@@ -41,5 +43,54 @@
     &:hover {
       color: #2f80ed; //! Won't work since icons are svg | need to change using material or fontawesome
     }
+  }
+
+  &__display {
+    display: flex;
+    flex-direction: row;
+  }
+
+  &__sidebar {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__day {
+    margin: 50px 0;
+  }
+
+  &__info {
+    height: fit-content;
+    border-left: 10px solid #2f80ed;
+    padding-left: 10px;
+  }
+
+  &__day-of-week {
+    font-weight: 500;
+    font-size: 2.7rem;
+  }
+
+  &__info-date {
+    color: #777777;
+    font-size: 1.3rem;
+  }
+
+  &__tasks {
+    margin: 10px 0 0 50px;
+  }
+
+  &__task {
+    display: block;
+    margin-bottom: 30px;
+  }
+
+  &__btn {
+    background-color: #00cdda;
+    margin-top: 35px;
+    font-size: 1.1rem;
+    padding: 2px 18px;
+    width: 70%;
+    text-transform: uppercase;
+    border-radius: 4px;
   }
 }

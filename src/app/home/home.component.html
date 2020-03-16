@@ -1,7 +1,7 @@
 <div class="home-page__home-container">
   <div class="home-page__header">
     <h1 class="home-page__title">Good Morning!</h1>
-    <h4 class="home-page__date">March 11, 2020</h4>
+    <h4 class="home-page__date">{{ curDate | date: "MMMM d, y" }}</h4>
   </div>
   <div class="home-page__navbar">
     <img class="home-page__icon" src="..\..\assets\images\notes.svg " />
@@ -13,15 +13,46 @@
     <mat-icon class="home-page__arrow">keyboard_arrow_right</mat-icon>
   </p>
   <div class="home-page__week">
-    <div class="home-page__day">
-      <div class="home-page__info">
-        <div class="home-page__day-of-week">Monday</div>
-        <div class="home-page__info-date">03/11/2020</div>
+    <div class="home-page__day" *ngFor="let day of tasksForWeek | async">
+      <div class="home-page__display">
+        <div class="home-page__sidebar">
+          <div class="home-page__info">
+            <div class="home-page__day-of-week">{{ day.name }}</div>
+            <div class="home-page__info-date">
+              {{ day.date | date: "MM/dd/yyyy" }}
+            </div>
+          </div>
+          <button
+            mat-flat-button
+            color="primary"
+            class="home-page__btn"
+            onclick="addNew()"
+          >
+            Add New
+          </button>
+        </div>
+        <div class="home-page__tasks">
+          <mat-checkbox class="home-page__task"
+            >Read Pages 101-125</mat-checkbox
+          >
+          <mat-checkbox class="home-page__task"
+            >Read Pages 101-125</mat-checkbox
+          >
+          <mat-checkbox class="home-page__task"
+            >Read Pages 101-125</mat-checkbox
+          >
+          <mat-checkbox class="home-page__task"
+            >Read Pages 101-125</mat-checkbox
+          >
+          <mat-checkbox class="home-page__task"
+            >Read Pages 101-125</mat-checkbox
+          >
+          <mat-checkbox class="home-page__task"
+            >Read Pages 101-125</mat-checkbox
+          >
+        </div>
+        <div class="home-page__tasks--none" *ngIf=""></div>
       </div>
-      <div class="home-page__tasks"></div>
-      <button mat-flat-button color="primary" class="home-page__btn">
-        Add New
-      </button>
     </div>
   </div>
 </div>
