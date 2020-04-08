@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
   //* Creating Reactive Form Group
   loginForm: FormGroup;
   error = false;
+  isDisabled = false;
 
   constructor(
     private fb: FormBuilder,
@@ -50,6 +51,7 @@ export class LoginComponent implements OnInit {
   }
 
   onLogin() {
+    this.isDisabled = true;
     const user = new User();
     user.email = this.email.value;
     user.password = this.password.value;
@@ -73,6 +75,7 @@ export class LoginComponent implements OnInit {
               panelClass: "snackBar--error",
             });
         this.error = true;
+        this.isDisabled = false;
       }
     );
   }

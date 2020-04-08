@@ -26,7 +26,7 @@
     class="login-page__btn"
     mat-flat-button
     color="primary"
-    [disabled]="loginForm.invalid"
+    [disabled]="loginForm.invalid || isDisabled"
     (click)="onLogin()"
   >
     Login

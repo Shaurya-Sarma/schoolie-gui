@@ -1,10 +1,10 @@
 import { Injectable } from "@angular/core";
 import { Observable, of } from "rxjs";
-import { Day } from "../home/day";
-import { Task } from "../home/task";
+import { Day } from "../model/day";
+import { Task } from "../model/task";
 
 @Injectable({
-  providedIn: "root"
+  providedIn: "root",
 })
 export class TasksService {
   constructor() {}
