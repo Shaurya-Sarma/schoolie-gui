@@ -7,3 +7,17 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+
+.snackBar--success {
+  color: #38ef7d;
+  button {
+    color: #f1f1f1;
+  }
+}
+
+.snackBar--error {
+  color: #ff4081;
+  button {
+    color: #f1f1f1;
+  }
+}

@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { Observable, from } from "rxjs";
+import { Observable, of } from "rxjs";
 import { Day } from "../home/day";
 import { Task } from "../home/task";
 
@@ -18,7 +18,12 @@ export class TasksService {
     task1.date = dayOne.date;
     task1.name = "Finish Homework";
     task1.subject = "Math";
+    const task1b = new Task();
+    task1b.date = dayOne.date;
+    task1b.name = "Read Pages";
+    task1b.subject = "Ela";
     dayOne.tasks.push(task1);
+    dayOne.tasks.push(task1b);
 
     const dayTwo = new Day();
     dayTwo.name = "Tuesday";
@@ -28,9 +33,9 @@ export class TasksService {
     task2.date = dayTwo.date;
     task2.name = "Finish Homework";
     task2.subject = "ELA";
-    dayTwo.tasks.push(task2);
+    // dayTwo.tasks.push(task2);
 
     const days = [dayOne, dayTwo];
-    return from([days]);
+    return of(days);
   }
 }

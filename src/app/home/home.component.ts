@@ -10,9 +10,13 @@ import { Observable } from "rxjs";
   styleUrls: ["./home.component.scss"]
 })
 export class HomeComponent implements OnInit {
-  curDate = new Date();
-  tasksForWeek = this.tasks.tasksForWeek();
-  constructor(private tasks: TasksService) {}
+  userName: string;
 
-  ngOnInit() {}
+  curDate = new Date();
+  tasksForWeek = this.tasksService.tasksForWeek();
+  constructor(private tasksService: TasksService) {}
+
+  ngOnInit() {
+    this.userName = localStorage.getItem("user");
+  }
 }
