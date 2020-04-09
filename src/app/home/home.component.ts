@@ -11,9 +11,9 @@ import { Observable } from "rxjs";
 })
 export class HomeComponent implements OnInit {
   userName: string;
-
   curDate = new Date();
   tasksForWeek = this.tasksService.tasksForWeek();
+
   constructor(private tasksService: TasksService) {}
 
   ngOnInit() {
