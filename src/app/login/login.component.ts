@@ -56,8 +56,9 @@ export class LoginComponent implements OnInit {
         console.log("output of login call ", res);
         localStorage.setItem("user", res.userName);
         localStorage.setItem("token", res.token);
-        this.snackbarService.openSnackBar("Login Succesful!", {
+        this.snackbarService.openSnackBar("Login Successful!", {
           panelClass: "snackBar--success",
+          duration: 3000,
         });
         this.router.navigate(["/home"]);
       },
