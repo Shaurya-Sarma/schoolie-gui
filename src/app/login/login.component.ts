@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { LoginService } from "../services/login.service";
 import { Router } from "@angular/router";
 import { User } from "../model/user";
-import { MatSnackBar } from "@angular/material/snack-bar";
+import { SnackbarService } from "../services/snackbar.service";
 
 @Component({
   selector: "app-login",
@@ -11,7 +11,6 @@ import { MatSnackBar } from "@angular/material/snack-bar";
   styleUrls: ["./login.component.scss"],
 })
 export class LoginComponent implements OnInit {
-  //* Creating Reactive Form Group
   loginForm: FormGroup;
   error = false;
   isDisabled = false;
@@ -20,7 +19,7 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder,
     private loginService: LoginService,
     private router: Router,
-    private snackBar: MatSnackBar
+    private snackbarService: SnackbarService
   ) {}
 
   ngOnInit() {
@@ -46,10 +45,6 @@ export class LoginComponent implements OnInit {
     return this.loginForm.get("password");
   }
 
-  openSnackBar(message: string, action: string, config: object) {
-    this.snackBar.open(message, action, config);
-  }
-
   onLogin() {
     this.isDisabled = true;
     const user = new User();
@@ -60,7 +55,8 @@ export class LoginComponent implements OnInit {
       (res: User) => {
         console.log("output of login call ", res);
         localStorage.setItem("user", res.userName);
-        this.openSnackBar("Login Successful!", "✖", {
+        localStorage.setItem("token", res.token);
+        this.snackbarService.openSnackBar("Login Succesful!", {
           panelClass: "snackBar--success",
         });
         this.router.navigate(["/home"]);
@@ -68,12 +64,20 @@ export class LoginComponent implements OnInit {
       (error) => {
         console.log("Error:", error);
         error.status === 401
-          ? this.openSnackBar("Invalid Password. Please try again", "✖", {
-              panelClass: "snackBar--error",
-            })
-          : this.openSnackBar("Authentication Failed.  Please try again", "✖", {
-              panelClass: "snackBar--error",
-            });
+          ? this.snackbarService.openSnackBar(
+              "Invalid Password. Please try again",
+              {
+                panelClass: "snackBar--error",
+                duration: 3000,
+              }
+            )
+          : this.snackbarService.openSnackBar(
+              "Authentication Failed.  Please try again",
+              {
+                panelClass: "snackBar--error",
+                duration: 3000,
+              }
+            );
         this.error = true;
         this.isDisabled = false;
       }

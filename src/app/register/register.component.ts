@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { RegisterService } from "../services/register.service";
 import { User } from "../model/user";
 import { Router } from "@angular/router";
-import { MatSnackBar } from "@angular/material/snack-bar";
+import { SnackbarService } from "../services/snackbar.service";
 
 @Component({
   selector: "app-register",
@@ -18,7 +18,7 @@ export class RegisterComponent implements OnInit {
     private fb: FormBuilder,
     private registerService: RegisterService,
     private router: Router,
-    private snackBar: MatSnackBar
+    private snackbarService: SnackbarService
   ) {}
 
   ngOnInit() {
@@ -52,10 +52,6 @@ export class RegisterComponent implements OnInit {
     return this.registerForm.get("password");
   }
 
-  openSnackBar(message: string, action: string, config: object) {
-    this.snackBar.open(message, action, config);
-  }
-
   onRegister() {
     const user = new User();
     user.email = this.email.value;
@@ -64,7 +60,7 @@ export class RegisterComponent implements OnInit {
     this.registerService.register(user).subscribe(
       (res: string) => {
         console.log("output of service call ", res);
-        this.openSnackBar("Registered Successfully!", "✖", {
+        this.snackbarService.openSnackBar("Registered Successfully!", {
           panelClass: "snackBar--success",
         });
         this.router.navigate(["/login"]);
@@ -72,12 +68,20 @@ export class RegisterComponent implements OnInit {
       (error) => {
         console.log("error ", error);
         error.status === 409
-          ? this.openSnackBar("Email already taken. Please try again", "✖", {
-              panelClass: "snackBar--error",
-            })
-          : this.openSnackBar("Registeration Failed. Please try again", "✖", {
-              panelClass: "snackBar--error",
-            });
+          ? this.snackbarService.openSnackBar(
+              "Email already taken. Please try again",
+              {
+                panelClass: "snackBar--error",
+                duration: 3000,
+              }
+            )
+          : this.snackbarService.openSnackBar(
+              "Registeration Failed. Please try again",
+              {
+                panelClass: "snackBar--error",
+                duration: 3000,
+              }
+            );
         this.error = true;
       }
     );
