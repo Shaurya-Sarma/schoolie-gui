@@ -56,12 +56,12 @@
   }
 
   &__day {
-    margin: 50px 0;
+    margin: 50px 0 125px 0;
   }
 
   &__info {
     height: fit-content;
-    border-left: 10px solid #2f80ed;
+    border-left: 10px solid #da3a00;
     padding-left: 10px;
   }
 
@@ -71,13 +71,16 @@
   }
 
   &__info-date {
-    color: #777777;
+    color: #5e5e5e;
     font-size: 1.3rem;
   }
 
   &__tasks {
     margin: 10px 0 0 50px;
     width: 100%;
+    &--none {
+      margin-right: 20px;
+    }
   }
 
   &__task {
@@ -116,7 +119,7 @@
     margin-top: 35px;
     font-size: 1.1rem;
     padding: 2px 18px;
-    width: 70%;
+    width: 130px;
     text-transform: uppercase;
     border-radius: 4px;
   }

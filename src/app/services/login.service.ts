@@ -7,13 +7,13 @@ import { Config } from "../config/config";
 import { Router } from "@angular/router";
 
 @Injectable({
-  providedIn: "root"
+  providedIn: "root",
 })
 export class LoginService {
   constructor(private http: HttpClient, private router: Router) {}
 
   login(user: User): Observable<User> {
     console.log("logging in user", user);
-    return this.http.post<User>(Config.API_URL + "login", user);
+    return this.http.post<User>(Config.API_URL + "/users/login", user);
   }
 }

@@ -2,12 +2,14 @@ import { Injectable } from "@angular/core";
 import { Observable, of } from "rxjs";
 import { Day } from "../model/day";
 import { Task } from "../model/task";
+import { Config } from "../config/config";
+import { HttpClient } from "@angular/common/http";
 
 @Injectable({
   providedIn: "root",
 })
 export class TasksService {
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
   getWeekDay(date: Date): string {
     const weekdays = [
@@ -24,7 +26,7 @@ export class TasksService {
     return weekdays[dayNumber];
   }
 
-  tasksForWeek(): Observable<Day[]> {
+  daysForWeek(): Observable<Day[]> {
     // goal is to return Day[] of 7 items
     const daysOfWeek = [];
     let curDate = new Date();
@@ -34,10 +36,14 @@ export class TasksService {
       nextDate.setDate(nextDate.getDate() + i);
       day.date = nextDate;
       day.name = this.getWeekDay(nextDate);
-      day.tasks = [];
+      day.tasks$ = this.getTasksForDay(day.date);
       daysOfWeek.push(day);
     }
 
     return of(daysOfWeek);
+  }
+
+  getTasksForDay(day: Date): Observable<Task[]> {
+    return this.http.get<Task[]>(Config.API_URL + "/tasks/by-day/" + day);
   }
 }

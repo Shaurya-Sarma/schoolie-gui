@@ -13,7 +13,7 @@
     <mat-icon class="home-page__arrow">keyboard_arrow_right</mat-icon>
   </p>
   <div class="home-page__week">
-    <div class="home-page__day" *ngFor="let day of tasksForWeek | async">
+    <div class="home-page__day" *ngFor="let day of daysForWeek | async">
       <div class="home-page__display">
         <div class="home-page__sidebar">
           <div class="home-page__info">
@@ -31,11 +31,8 @@
             Add New
           </button>
         </div>
-        <div
-          class="home-page__tasks"
-          *ngIf="day.tasks !== null && day.tasks.length !== 0; else NoTasks"
-        >
-          <div class="home-page__task" *ngFor="let task of day.tasks">
+        <div class="home-page__tasks">
+          <div class="home-page__task" *ngFor="let task of day.tasks$ | async">
             <mat-checkbox class="home-page__checkbox" color="primary">{{
               task.name
             }}</mat-checkbox>
@@ -43,8 +40,13 @@
             <mat-icon class="home-page__delete">delete</mat-icon>
           </div>
         </div>
-        <ng-template class="home-page__tasks--none" #NoTasks>
-          No Homework Yet!
+        <ng-template #NoTasks>
+          <div
+            class="home-page__tasks--none"
+            style="font-style: italic; margin: 20px 0 0 20px; color: #414346;"
+          >
+            Nothing is on your agenda for today!
+          </div>
         </ng-template>
       </div>
     </div>

@@ -6,13 +6,13 @@ import { HttpClient } from "@angular/common/http";
 import { Config } from "../config/config";
 
 @Injectable({
-  providedIn: "root"
+  providedIn: "root",
 })
 export class RegisterService {
   constructor(private http: HttpClient) {}
 
   register(user: User): Observable<string> {
     console.log("registering user ", user);
-    return this.http.post<string>(Config.API_URL + "register", user);
+    return this.http.post<string>(Config.API_URL + "/users/register", user);
   }
 }
