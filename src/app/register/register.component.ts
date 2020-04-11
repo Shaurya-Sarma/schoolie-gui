@@ -1,9 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { RegisterService } from "../services/register.service";
 import { User } from "../model/user";
 import { Router } from "@angular/router";
 import { SnackbarService } from "../services/snackbar.service";
+import { UserService } from "../services/user.service";
 
 @Component({
   selector: "app-register",
@@ -16,7 +16,7 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private registerService: RegisterService,
+    private userService: UserService,
     private router: Router,
     private snackbarService: SnackbarService
   ) {}
@@ -57,7 +57,7 @@ export class RegisterComponent implements OnInit {
     user.email = this.email.value;
     user.password = this.password.value;
     user.userName = this.username.value;
-    this.registerService.register(user).subscribe(
+    this.userService.register(user).subscribe(
       (res: string) => {
         console.log("output of service call ", res);
         this.snackbarService.openSnackBar("Registered Successfully!", {

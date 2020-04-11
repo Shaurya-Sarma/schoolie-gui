@@ -1,9 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { LoginService } from "../services/login.service";
 import { Router } from "@angular/router";
 import { User } from "../model/user";
 import { SnackbarService } from "../services/snackbar.service";
+import { UserService } from "../services/user.service";
 
 @Component({
   selector: "app-login",
@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private loginService: LoginService,
+    private userService: UserService,
     private router: Router,
     private snackbarService: SnackbarService
   ) {}
@@ -51,7 +51,7 @@ export class LoginComponent implements OnInit {
     user.email = this.email.value;
     user.password = this.password.value;
     this.error = false;
-    this.loginService.login(user).subscribe(
+    this.userService.login(user).subscribe(
       (res: User) => {
         console.log("output of login call ", res);
         localStorage.setItem("user", res.userName);

@@ -9,11 +9,16 @@ import { Router } from "@angular/router";
 @Injectable({
   providedIn: "root",
 })
-export class LoginService {
+export class UserService {
   constructor(private http: HttpClient, private router: Router) {}
 
   login(user: User): Observable<User> {
     console.log("logging in user", user);
     return this.http.post<User>(Config.API_URL + "/users/login", user);
+  }
+
+  register(user: User): Observable<string> {
+    console.log("registering user ", user);
+    return this.http.post<string>(Config.API_URL + "/users/register", user);
   }
 }
