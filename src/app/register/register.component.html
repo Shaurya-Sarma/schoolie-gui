@@ -26,16 +26,17 @@
         Must have an uppercase, lowercase, and number
       </mat-error>
     </mat-form-field>
+    <button
+      class="register-page__btn"
+      mat-flat-button
+      color="primary"
+      [disabled]="registerForm.invalid"
+      (click)="onRegister()"
+      type="submit"
+    >
+      register
+    </button>
   </form>
-  <button
-    class="register-page__btn"
-    mat-flat-button
-    color="primary"
-    [disabled]="registerForm.invalid"
-    (click)="onRegister()"
-  >
-    register
-  </button>
   <p class="register-page__login">
     Already have an account?
     <a

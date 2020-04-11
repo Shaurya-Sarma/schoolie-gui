@@ -62,6 +62,7 @@ export class RegisterComponent implements OnInit {
         console.log("output of service call ", res);
         this.snackbarService.openSnackBar("Registered Successfully!", {
           panelClass: "snackBar--success",
+          duration: 3000,
         });
         this.router.navigate(["/login"]);
       },

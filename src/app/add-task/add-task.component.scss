@@ -1,0 +1,26 @@
+.addTask {
+  &__form-field {
+    display: block;
+    margin-bottom: 15px;
+  }
+  &__buttons {
+    justify-content: center;
+  }
+  &__submit {
+    background: linear-gradient(
+      to right,
+      #219653,
+      #219653
+    ); //*Bypasses Disabled
+    transition: 0.5s;
+    &:hover {
+      filter: saturate(130%);
+    }
+    &:disabled {
+      color: #fff;
+      &:hover {
+        filter: nozne;
+      }
+    }
+  }
+}

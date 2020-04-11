@@ -18,6 +18,8 @@ import { HomeComponent } from "./home/home.component";
 import { MatCheckboxModule } from "@angular/material/checkbox";
 import { HttpClientModule } from "@angular/common/http";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
+import { MatDialogModule } from "@angular/material/dialog";
+import { AddTaskComponent } from "./add-task/add-task.component";
 
 @NgModule({
   declarations: [
@@ -25,6 +27,7 @@ import { MatSnackBarModule } from "@angular/material/snack-bar";
     LoginComponent,
     RegisterComponent,
     HomeComponent,
+    AddTaskComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,7 +41,9 @@ import { MatSnackBarModule } from "@angular/material/snack-bar";
     MatCheckboxModule,
     HttpClientModule,
     MatSnackBarModule,
+    MatDialogModule,
   ],
+  entryComponents: [AddTaskComponent],
   providers: [],
   bootstrap: [AppComponent],
 })

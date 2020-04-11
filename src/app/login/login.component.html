@@ -18,19 +18,21 @@
         Please enter a valid password
       </mat-error>
     </mat-form-field>
+    <div class="login-page__subtitle">
+      <a href="#" class="login-page__subtitle-link">Forgot Your Password?</a>
+    </div>
+    <button
+      class="login-page__btn"
+      mat-flat-button
+      color="primary"
+      [disabled]="loginForm.invalid || isDisabled"
+      (click)="onLogin()"
+      type="submit"
+    >
+      Login
+    </button>
   </form>
-  <div class="login-page__subtitle">
-    <a href="#" class="login-page__subtitle-link">Forgot Your Password?</a>
-  </div>
-  <button
-    class="login-page__btn"
-    mat-flat-button
-    color="primary"
-    [disabled]="loginForm.invalid || isDisabled"
-    (click)="onLogin()"
-  >
-    Login
-  </button>
+
   <p class="login-page__signup">
     Not A Member?
     <a

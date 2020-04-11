@@ -29,7 +29,11 @@ export class TasksService {
   daysForWeek(): Observable<Day[]> {
     // goal is to return Day[] of 7 items
     const daysOfWeek = [];
-    let curDate = new Date();
+    let curDate = new Date(
+      new Date().getFullYear(),
+      new Date().getMonth(),
+      new Date().getDate()
+    );
     for (let i = 0; i < 7; i++) {
       const day = new Day();
       let nextDate = new Date(curDate);
@@ -45,5 +49,9 @@ export class TasksService {
 
   getTasksForDay(day: Date): Observable<Task[]> {
     return this.http.get<Task[]>(Config.API_URL + "/tasks/by-day/" + day);
+  }
+
+  addTask(task: Task): Observable<string> {
+    return this.http.post<string>(Config.API_URL + "/tasks/add-task", task);
   }
 }
