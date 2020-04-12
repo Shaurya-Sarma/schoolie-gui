@@ -4,13 +4,16 @@ import { HttpClient } from "@angular/common/http";
 import { User } from "../model/user";
 import { Observable } from "rxjs";
 import { Config } from "../config/config";
-import { Router } from "@angular/router";
+
+import { JwtHelperService } from "@auth0/angular-jwt";
 
 @Injectable({
   providedIn: "root",
 })
 export class UserService {
-  constructor(private http: HttpClient, private router: Router) {}
+  jwtHelper = new JwtHelperService();
+
+  constructor(private http: HttpClient) {}
 
   login(user: User): Observable<User> {
     console.log("logging in user", user);
@@ -20,5 +23,10 @@ export class UserService {
   register(user: User): Observable<string> {
     console.log("registering user ", user);
     return this.http.post<string>(Config.API_URL + "/users/register", user);
+  }
+
+  public isAuthenticated(): boolean {
+    const token = localStorage.getItem("token");
+    return !this.jwtHelper.isTokenExpired(token);
   }
 }

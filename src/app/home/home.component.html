@@ -13,7 +13,7 @@
     <mat-icon class="home-page__arrow">keyboard_arrow_right</mat-icon>
   </p>
   <div class="home-page__week">
-    <div class="home-page__day" *ngFor="let day of daysForWeek | async">
+    <div class="home-page__day" *ngFor="let day of daysForWeek$ | async">
       <div class="home-page__display">
         <div class="home-page__sidebar">
           <div class="home-page__info">
@@ -26,7 +26,7 @@
             mat-flat-button
             color="primary"
             class="home-page__btn"
-            (click)="openDialog()"
+            (click)="openDialog(day)"
           >
             Add New
           </button>

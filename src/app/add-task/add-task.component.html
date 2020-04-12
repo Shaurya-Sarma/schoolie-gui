@@ -4,9 +4,7 @@
     <p class="addTask__subtitle">What would you like to do today?</p>
     <mat-form-field class="addTask__form-field">
       <mat-label class="addTask__label">Description</mat-label>
-      <mat-error *ngIf="taskName.invalid && taskSubject.touched"
-        >This field is required</mat-error
-      >
+      <mat-error *ngIf="taskName.invalid">This field is required</mat-error>
       <input matInput class="addTask__text" formControlName="taskName" />
     </mat-form-field>
     <mat-form-field class="addTask__form-field">
@@ -30,7 +28,6 @@
       class="addTask__submit"
       [disabled]="addTaskForm.invalid"
       (click)="createTask()"
-      [mat-dialog-close]
     >
       Create Task
     </button>

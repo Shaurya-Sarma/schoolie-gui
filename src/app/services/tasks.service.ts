@@ -52,6 +52,6 @@ export class TasksService {
   }
 
   addTask(task: Task): Observable<string> {
-    return this.http.post<string>(Config.API_URL + "/tasks/add-task", task);
+    return this.http.post<string>(Config.API_URL + "/tasks/", task);
   }
 }

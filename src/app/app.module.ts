@@ -16,10 +16,13 @@ import { RegisterComponent } from "./register/register.component";
 import { HomeComponent } from "./home/home.component";
 
 import { MatCheckboxModule } from "@angular/material/checkbox";
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
 import { MatDialogModule } from "@angular/material/dialog";
+
 import { AddTaskComponent } from "./add-task/add-task.component";
+import { TokenInterceptor } from "./services/token.interceptor";
+import { JwtModule } from "@auth0/angular-jwt";
 
 @NgModule({
   declarations: [
@@ -44,7 +47,13 @@ import { AddTaskComponent } from "./add-task/add-task.component";
     MatDialogModule,
   ],
   entryComponents: [AddTaskComponent],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
