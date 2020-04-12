@@ -54,4 +54,14 @@ export class TasksService {
   addTask(task: Task): Observable<string> {
     return this.http.post<string>(Config.API_URL + "/tasks/", task);
   }
+
+  removeTask(task: Task): Observable<string> {
+    return this.http.delete<string>(
+      Config.API_URL + "/tasks/delete/" + task._id
+    );
+  }
+
+  updateTask(task: Task): Observable<string> {
+    return this.http.put<string>(Config.API_URL + "/tasks/", task);
+  }
 }

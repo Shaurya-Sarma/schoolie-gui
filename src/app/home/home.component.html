@@ -33,11 +33,17 @@
         </div>
         <div class="home-page__tasks">
           <div class="home-page__task" *ngFor="let task of day.tasks$ | async">
-            <mat-checkbox class="home-page__checkbox" color="primary">{{
-              task.name
-            }}</mat-checkbox>
+            <mat-checkbox
+              [checked]="task.completed"
+              (change)="updateTask(task)"
+              class="home-page__checkbox"
+              color="primary"
+              >{{ task.name }}</mat-checkbox
+            >
             <p class="home-page__subject">{{ task.subject }}</p>
-            <mat-icon class="home-page__delete">delete</mat-icon>
+            <mat-icon class="home-page__delete" (click)="deleteTask(task)"
+              >delete</mat-icon
+            >
           </div>
         </div>
         <ng-template #NoTasks>
