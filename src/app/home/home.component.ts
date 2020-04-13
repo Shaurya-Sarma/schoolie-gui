@@ -24,7 +24,7 @@ export class HomeComponent implements OnInit {
   curHour = this.curDate.getHours();
   daysForWeek$ = {};
 
-  colors: Array<any> = [
+  colors: Array<String> = [
     "#173F5F",
     "#5A809E",
     "#7C79A2",
