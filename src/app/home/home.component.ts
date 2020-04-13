@@ -120,7 +120,6 @@ export class HomeComponent implements OnInit {
   }
 
   getColors(index) {
-    console.log("colors", this.colors[index]);
     return this.colors[index];
   }
 }
