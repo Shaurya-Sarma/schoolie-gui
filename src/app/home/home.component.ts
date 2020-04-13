@@ -5,6 +5,7 @@ import { AddTaskComponent } from "../add-task/add-task.component";
 import { SnackbarService } from "../services/snackbar.service";
 import { Day } from "../model/day";
 import { Task } from "../model/task";
+import { Router } from "@angular/router";
 
 export interface DialogData {
   taskDate: Date;
@@ -16,14 +17,17 @@ export interface DialogData {
   styleUrls: ["./home.component.scss"],
 })
 export class HomeComponent implements OnInit {
+  greeting: string;
   userName: string;
 
   curDate = new Date();
+  curHour = this.curDate.getHours();
   daysForWeek$ = {};
 
   constructor(
     private tasksService: TasksService,
     public dialog: MatDialog,
+    private router: Router,
     private snackbarService: SnackbarService
   ) {}
 
@@ -80,12 +84,28 @@ export class HomeComponent implements OnInit {
     );
   }
 
+  onLogout() {
+    localStorage.removeItem("token");
+    this.router.navigate(["/login"]);
+  }
+
   ngOnInit() {
     this.userName = localStorage.getItem("user");
     this.fetch();
+    this.getGreeting();
   }
 
   fetch() {
     this.daysForWeek$ = this.tasksService.daysForWeek();
+  }
+
+  getGreeting() {
+    if (this.curHour < 11) {
+      this.greeting = "Good Morning";
+    } else if (this.curHour >= 11 && this.curHour <= 16) {
+      this.greeting = "Good Afternoon";
+    } else if (this.curHour > 16 && this.curHour <= 23) {
+      this.greeting = "Good Evening";
+    }
   }
 }
