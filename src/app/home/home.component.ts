@@ -24,6 +24,16 @@ export class HomeComponent implements OnInit {
   curHour = this.curDate.getHours();
   daysForWeek$ = {};
 
+  colors: Array<any> = [
+    "#173F5F",
+    "#5A809E",
+    "#7C79A2",
+    "#6CC2BD",
+    "#F57D7C",
+    "#FFC1A6",
+    "#FEE4C4",
+  ];
+
   constructor(
     private tasksService: TasksService,
     public dialog: MatDialog,
@@ -107,5 +117,10 @@ export class HomeComponent implements OnInit {
     } else if (this.curHour > 16 && this.curHour <= 23) {
       this.greeting = "Good Evening";
     }
+  }
+
+  getColors(index) {
+    console.log("colors", this.colors[index]);
+    return this.colors[index];
   }
 }

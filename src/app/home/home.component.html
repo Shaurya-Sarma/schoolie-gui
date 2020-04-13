@@ -13,10 +13,16 @@
     <mat-icon class="home-page__arrow">keyboard_arrow_right</mat-icon>
   </p>
   <div class="home-page__week">
-    <div class="home-page__day" *ngFor="let day of daysForWeek$ | async">
+    <div
+      class="home-page__day"
+      *ngFor="let day of daysForWeek$ | async; let i = index"
+    >
       <div class="home-page__display">
         <div class="home-page__sidebar">
-          <div class="home-page__info">
+          <div
+            class="home-page__info"
+            [ngStyle]="{ 'border-color': getColors(i) }"
+          >
             <div class="home-page__day-of-week">{{ day.name }}</div>
             <div class="home-page__info-date">
               {{ day.date | date: "MM/dd/yyyy" }}
