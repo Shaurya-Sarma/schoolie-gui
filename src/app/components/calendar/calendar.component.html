@@ -1,2 +1,37 @@
 <app-header></app-header>
-<p>calendar works!</p>
+<div class="calendar-page__container">
+  <div class="calendar-page__title">
+    <mat-icon
+      class="calendar-page__previous"
+      matRipple
+      [matRippleColor]="'rgba(235, 87, 87, 0.2)'"
+      >keyboard_arrow_left</mat-icon
+    >
+    <h2 class="calendar-page__info">
+      {{ months[curDate.getMonth()] }} {{ curDate.getFullYear() }}
+    </h2>
+    <mat-icon
+      class="calendar-page__after"
+      matRipple
+      [matRippleColor]="'rgba(235, 87, 87, 0.2)'"
+      >keyboard_arrow_right</mat-icon
+    >
+  </div>
+  <div class="calendar-page__wrapper">
+    <div class="calendar-page__days">
+      <h4 class="calendar-page__day" *ngFor="let day of daysOfWeek">
+        {{ day }}
+      </h4>
+    </div>
+    <div class="calendar-page__date-grid">
+      <div class="calendar-page__box" *ngFor="let date of dates">
+        <div
+          class="calendar-page__date"
+          [ngClass]="{ 'calendar-page__today': date === curDate.getDate() }"
+        >
+          {{ date }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

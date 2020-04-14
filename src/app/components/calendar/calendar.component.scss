@@ -1,0 +1,85 @@
+.calendar-page {
+  &__container {
+    background-color: #f1f1f1;
+    width: 100%;
+    height: calc(100vh - 64px); //*Subtracting height of toolbar
+  }
+  &__title {
+    display: flex;
+    background-color: #ffffff;
+    justify-content: space-around;
+    vertical-align: middle;
+    padding: 25px 0;
+  }
+  &__previous,
+  &__after {
+    transform: scale(1.75);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.5s;
+    &:hover {
+      color: #eb5757;
+    }
+    &::selection {
+      color: none;
+      background: none;
+    }
+  }
+  &__info {
+    font-weight: normal;
+    text-transform: capitalize;
+  }
+  &__wrapper {
+    padding: 30px 20px 0 20px;
+  }
+  &__date-grid,
+  &__days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+  }
+  &__day {
+    font-weight: 500;
+    text-transform: uppercase;
+    color: #eb5757;
+  }
+  &__day,
+  &__box {
+    display: flex;
+    justify-content: center;
+  }
+  &__box {
+    margin: 25px 0;
+    display: flex;
+    justify-content: center;
+  }
+  &__date {
+    font-size: 1.18rem;
+    font-weight: 500;
+    color: #3c4043;
+    height: 32px;
+    width: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    transition: all 0.4s;
+    cursor: pointer;
+    &::selection {
+      color: none;
+      background: none;
+    }
+    &:hover {
+      background: #eb57578a;
+    }
+  }
+  &__past-date {
+    color: gray;
+  }
+  &__today {
+    background-color: #eb5757;
+    color: #ffffff;
+    &:hover {
+      background-color: #ca4b4b;
+    }
+  }
+}

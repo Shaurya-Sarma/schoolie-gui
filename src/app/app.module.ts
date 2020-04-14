@@ -26,7 +26,8 @@ import { JwtModule } from "@auth0/angular-jwt";
 import { HeaderComponent } from "./components/header/header.component";
 import { FooterComponent } from "./components/footer/footer.component";
 import { MatToolbarModule } from "@angular/material/toolbar";
-import { CalendarComponent } from './components/calendar/calendar.component';
+import { CalendarComponent } from "./components/calendar/calendar.component";
+import { MatRippleModule } from "@angular/material/core";
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { CalendarComponent } from './components/calendar/calendar.component';
     MatSnackBarModule,
     MatDialogModule,
     MatToolbarModule,
+    MatRippleModule,
   ],
   entryComponents: [AddTaskComponent],
   providers: [
