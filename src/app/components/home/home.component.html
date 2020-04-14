@@ -1,12 +1,8 @@
+<app-header></app-header>
 <div class="home-page__home-container">
   <div class="home-page__header">
     <h1 class="home-page__title">{{ greeting }}, {{ userName }}!</h1>
     <h4 class="home-page__date">{{ curDate | date: "MMMM d, y" }}</h4>
-  </div>
-  <div class="home-page__navbar">
-    <h4 class="home-page__links">Notes</h4>
-    <h4 class="home-page__links">Calendar</h4>
-    <h4 class="home-page__links" (click)="onLogout()">Logout</h4>
   </div>
   <p class="home-page__heading">
     This Week's Agenda

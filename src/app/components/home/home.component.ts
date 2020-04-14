@@ -1,10 +1,10 @@
 import { Component, OnInit } from "@angular/core";
-import { TasksService } from "../services/tasks.service";
+import { TasksService } from "src/app/services/tasks.service";
 import { MatDialog } from "@angular/material/dialog";
 import { AddTaskComponent } from "../add-task/add-task.component";
-import { SnackbarService } from "../services/snackbar.service";
-import { Day } from "../model/day";
-import { Task } from "../model/task";
+import { SnackbarService } from "src/app/services/snackbar.service";
+import { Day } from "src/app/model/day";
+import { Task } from "src/app/model/task";
 import { Router } from "@angular/router";
 
 export interface DialogData {
@@ -92,11 +92,6 @@ export class HomeComponent implements OnInit {
         });
       }
     );
-  }
-
-  onLogout() {
-    localStorage.removeItem("token");
-    this.router.navigate(["/login"]);
   }
 
   ngOnInit() {

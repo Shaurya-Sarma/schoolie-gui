@@ -2,9 +2,9 @@ import { Component, OnInit, Inject } from "@angular/core";
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
 import { DialogData } from "../home/home.component";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
-import { Task } from "../model/task";
-import { TasksService } from "../services/tasks.service";
-import { SnackbarService } from "../services/snackbar.service";
+import { TasksService } from "src/app/services/tasks.service";
+import { SnackbarService } from "src/app/services/snackbar.service";
+import { Task } from "src/app/model/task";
 
 @Component({
   selector: "app-add-task",
