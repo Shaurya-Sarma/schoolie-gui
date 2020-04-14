@@ -13,12 +13,16 @@
   }
   &__link {
     font-size: 0.9rem;
+    outline: none;
     margin: 0 24px;
     padding: 0 1px;
     position: relative;
     font-weight: 500;
     transition: 0.3s ease-in-out 0s;
     text-transform: uppercase;
+    &-active {
+      color: #c0a0ff;
+    }
     &:before {
       content: "";
       position: absolute;

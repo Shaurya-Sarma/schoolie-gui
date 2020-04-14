@@ -26,6 +26,7 @@ import { JwtModule } from "@auth0/angular-jwt";
 import { HeaderComponent } from "./components/header/header.component";
 import { FooterComponent } from "./components/footer/footer.component";
 import { MatToolbarModule } from "@angular/material/toolbar";
+import { CalendarComponent } from './components/calendar/calendar.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { MatToolbarModule } from "@angular/material/toolbar";
     AddTaskComponent,
     HeaderComponent,
     FooterComponent,
+    CalendarComponent,
   ],
   imports: [
     BrowserModule,

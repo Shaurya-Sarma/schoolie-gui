@@ -1,9 +1,27 @@
 <mat-toolbar class="header__toolbar">
   <span class="header__title">Schoolie</span>
   <div class="header__links">
-    <span class="header__link" (click)="redirect('/home')">Home</span>
-    <span class="header__link" (click)="redirect('/notes')">Notes</span>
-    <span class="header__link" (click)="redirect('/calendar')">Calendar</span>
+    <span
+      class="header__link"
+      [routerLink]="['/home']"
+      routerLinkActive="header__link-active"
+      (click)="redirect('/home')"
+      >Home</span
+    >
+    <span
+      class="header__link"
+      [routerLink]="['/notes']"
+      routerLinkActive="header__link-active"
+      (click)="redirect('/notes')"
+      >Notes</span
+    >
+    <span
+      class="header__link"
+      [routerLink]="['/calendar']"
+      routerLinkActive="header__link-active"
+      (click)="redirect('/calendar')"
+      >Calendar</span
+    >
     <span class="header__link" id="logout" (click)="onLogout()">Logout</span>
   </div>
 </mat-toolbar>
