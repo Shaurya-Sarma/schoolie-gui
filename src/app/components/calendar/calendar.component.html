@@ -3,6 +3,7 @@
   <div class="calendar-page__title">
     <mat-icon
       class="calendar-page__previous"
+      (click)="changeDate('prev')"
       matRipple
       [matRippleColor]="'rgba(235, 87, 87, 0.2)'"
       >keyboard_arrow_left</mat-icon
@@ -12,6 +13,7 @@
     </h2>
     <mat-icon
       class="calendar-page__after"
+      (click)="changeDate('after')"
       matRipple
       [matRippleColor]="'rgba(235, 87, 87, 0.2)'"
       >keyboard_arrow_right</mat-icon

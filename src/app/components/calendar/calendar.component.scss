@@ -30,14 +30,19 @@
     text-transform: capitalize;
   }
   &__wrapper {
-    padding: 30px 20px 0 20px;
+    padding: 25px 40px 0 40px;
   }
   &__date-grid,
   &__days {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
   }
+  &__date-grid {
+    grid-template-rows: repeat(5, minmax(75px, auto));
+    border: 0.5px solid rgba(0, 0, 0, 0.22);
+  }
   &__day {
+    margin-bottom: 15px;
     font-weight: 500;
     text-transform: uppercase;
     color: #eb5757;
@@ -48,16 +53,17 @@
     justify-content: center;
   }
   &__box {
-    margin: 25px 0;
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
+    border: 0.5px solid rgba(0, 0, 0, 0.22);
   }
   &__date {
-    font-size: 1.18rem;
     font-weight: 500;
+    margin: 5px 5px 5px 0;
+    font-size: 0.9rem;
     color: #3c4043;
-    height: 32px;
-    width: 32px;
+    width: 22px;
+    height: 22px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -71,9 +77,6 @@
     &:hover {
       background: #eb57578a;
     }
-  }
-  &__past-date {
-    color: gray;
   }
   &__today {
     background-color: #eb5757;
