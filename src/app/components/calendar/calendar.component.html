@@ -26,20 +26,22 @@
       </h4>
     </div>
     <div class="calendar-page__date-grid">
-      <div class="calendar-page__box" *ngFor="let dateCell of dates">
+      <div
+        class="calendar-page__cell"
+        *ngFor="let dateCell of dates"
+        [ngClass]="{ 'calendar-page__empty': !dateCell.date }"
+      >
         <div *ngIf="!dateCell.date; else hasDate"></div>
         <ng-template #hasDate>
-          <div class="calendar-page__cell">
-            <div
-              #hasDate
-              class="calendar-page__number"
-              [ngClass]="{
-                'calendar-page__today':
-                  dateCell.date.getTime() === today.getTime()
-              }"
-            >
-              {{ dateCell.date.getDate() }}
-            </div>
+          <div
+            #hasDate
+            class="calendar-page__number"
+            [ngClass]="{
+              'calendar-page__today':
+                dateCell.date.getTime() === today.getTime()
+            }"
+          >
+            {{ dateCell.date.getDate() }}
           </div>
         </ng-template>
       </div>
