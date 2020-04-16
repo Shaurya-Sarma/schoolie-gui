@@ -9,7 +9,7 @@
       >keyboard_arrow_left</mat-icon
     >
     <h2 class="calendar-page__info">
-      {{ months[curDate.getMonth()] }} {{ curDate.getFullYear() }}
+      {{ curMonth }} {{ curDate.getFullYear() }}
     </h2>
     <mat-icon
       class="calendar-page__after"
@@ -26,13 +26,22 @@
       </h4>
     </div>
     <div class="calendar-page__date-grid">
-      <div class="calendar-page__box" *ngFor="let date of dates">
-        <div
-          class="calendar-page__date"
-          [ngClass]="{ 'calendar-page__today': date === curDate.getDate() }"
-        >
-          {{ date }}
-        </div>
+      <div class="calendar-page__box" *ngFor="let dateCell of dates">
+        <div *ngIf="!dateCell.date; else hasDate"></div>
+        <ng-template #hasDate>
+          <div class="calendar-page__cell">
+            <div
+              #hasDate
+              class="calendar-page__number"
+              [ngClass]="{
+                'calendar-page__today':
+                  dateCell.date.getTime() === today.getTime()
+              }"
+            >
+              {{ dateCell.date.getDate() }}
+            </div>
+          </div>
+        </ng-template>
       </div>
     </div>
   </div>

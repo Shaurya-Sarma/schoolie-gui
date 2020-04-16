@@ -1,4 +1,6 @@
 import { Component, OnInit } from "@angular/core";
+import { BehaviorSubject } from "rxjs";
+import { DateCell } from "src/app/model/date-cell";
 
 @Component({
   selector: "app-calendar",
@@ -6,70 +8,65 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./calendar.component.scss"],
 })
 export class CalendarComponent implements OnInit {
-  curDate: Date = new Date();
-
-  months: Array<string> = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
-
-  daysOfWeek: Array<string> = [
-    "Sun",
-    "Mon",
-    "Tues",
-    "Wed",
-    "Thurs",
-    "Fri",
-    "Sat",
-  ];
-
-  renderCalendar() {}
-  firstDay: number = new Date(
-    this.curDate.getFullYear(),
-    this.curDate.getMonth()
-  ).getDay();
-
-  endDate: number = new Date(
-    this.curDate.getFullYear(),
-    this.curDate.getMonth() + 1,
-    0
-  ).getDate();
-
-  dates: Array<any> = [...Array(this.endDate).keys()].map(
-    (number) => number + 1
+  today = new Date(
+    new Date().getFullYear(),
+    new Date().getMonth(),
+    new Date().getDate()
   );
+  curDate: Date;
+  curMonth: string;
+  daysOfWeek: string[] = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
 
-  addOuterDates(arr: Array<any>) {
+  dates: DateCell[] = [];
+
+  renderCalendar() {
+    this.curMonth = this.curDate.toLocaleString("default", { month: "long" });
+    const firstDay: number = new Date(
+      this.curDate.getFullYear(),
+      this.curDate.getMonth()
+    ).getDay();
+
+    const endDate: number = new Date(
+      this.curDate.getFullYear(),
+      this.curDate.getMonth() + 1,
+      0
+    ).getDate();
+
+    const arr: DateCell[] = [...Array(endDate).keys()].map((number) => {
+      const dateCell = new DateCell();
+      dateCell.date = new Date(
+        this.curDate.getFullYear(),
+        this.curDate.getMonth(),
+        number + 1
+      );
+      return dateCell;
+    });
+
     //* Adding Dates For Prev Month
-    for (let i = this.firstDay; i > 0; i--) {
-      arr.unshift(" ");
+    for (let i = firstDay; i > 0; i--) {
+      arr.unshift(new DateCell());
     }
     //* Adding Dates For Next Month
-    for (let j = 35 - arr.length; j > 0; j--) {
-      arr.push(" ");
+    for (let j = 42 - arr.length; j > 0; j--) {
+      arr.push(new DateCell());
     }
+
+    this.dates = arr;
   }
 
   changeDate(direction: string) {
-    if (direction === "prev") {
-      this.curDate.setMonth(this.curDate.getMonth() - 1);
-    } else if (direction === "after") {
-    }
+    this.curDate.setMonth(
+      direction === "prev"
+        ? this.curDate.getMonth() - 1
+        : this.curDate.getMonth() + 1
+    );
+    this.renderCalendar();
   }
 
   constructor() {}
 
   ngOnInit() {
-    this.addOuterDates(this.dates);
+    this.curDate = new Date();
+    this.renderCalendar();
   }
 }
