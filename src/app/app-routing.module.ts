@@ -5,6 +5,7 @@ import { RegisterComponent } from "./components/register/register.component";
 import { HomeComponent } from "./components/home/home.component";
 import { AuthGuardService } from "./services/auth-guard.service";
 import { CalendarComponent } from "./components/calendar/calendar.component";
+import { DateComponent } from "./components/date/date.component";
 
 const routes: Routes = [
   { path: "login", component: LoginComponent },
@@ -13,6 +14,11 @@ const routes: Routes = [
   {
     path: "calendar",
     component: CalendarComponent,
+    canActivate: [AuthGuardService],
+  },
+  {
+    path: "calendar/:date",
+    component: DateComponent,
     canActivate: [AuthGuardService],
   },
   { path: "", redirectTo: "/home", pathMatch: "full" },

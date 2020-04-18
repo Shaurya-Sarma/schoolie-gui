@@ -31,14 +31,33 @@
         *ngFor="let dateCell of dates"
         [ngClass]="{ 'calendar-page__empty': !dateCell.date }"
       >
+        <div class="calendar-page__labels">
+          <div class="calendar-page__tasks" *ngIf="dateCell.taskCount">
+            <span class="calendar-page__counter"
+              >Tasks ({{ dateCell.taskCount }})</span
+            >
+          </div>
+          <div class="calendar-page__events" *ngIf="dateCell.eventCount">
+            <span class="calendar-page__counter"
+              >Events ({{ dateCell.eventCount }})</span
+            >
+          </div>
+          <div class="calendar-page__holidays" *ngIf="dateCell.holidayCount">
+            <span class="calendar-page__counter"
+              >Holidays ({{ dateCell.holidayCount }})</span
+            >
+          </div>
+        </div>
         <div *ngIf="!dateCell.date; else hasDate"></div>
         <ng-template #hasDate>
           <div
             #hasDate
             class="calendar-page__number"
+            (click)="redirect(dateCell.date)"
             [ngClass]="{
               'calendar-page__today':
-                dateCell.date.getTime() === today.getTime()
+                dateCell.date.getTime() === today.getTime(),
+              'calendar-page__other-month': dateCell.isCurrentMonth === false
             }"
           >
             {{ dateCell.date.getDate() }}

@@ -28,6 +28,7 @@ import { FooterComponent } from "./components/footer/footer.component";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { CalendarComponent } from "./components/calendar/calendar.component";
 import { MatRippleModule } from "@angular/material/core";
+import { DateComponent } from "./components/date/date.component";
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { MatRippleModule } from "@angular/material/core";
     HeaderComponent,
     FooterComponent,
     CalendarComponent,
+    DateComponent,
   ],
   imports: [
     BrowserModule,

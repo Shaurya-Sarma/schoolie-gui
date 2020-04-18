@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
-import { BehaviorSubject } from "rxjs";
 import { DateCell } from "src/app/model/date-cell";
+import { CalendarService } from "src/app/services/calendar.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-calendar",
@@ -32,7 +33,7 @@ export class CalendarComponent implements OnInit {
       0
     ).getDate();
 
-    const arr: DateCell[] = [...Array(endDate).keys()].map((number) => {
+    let arr: DateCell[] = [...Array(endDate).keys()].map((number) => {
       const dateCell = new DateCell();
       dateCell.date = new Date(
         this.curDate.getFullYear(),
@@ -43,15 +44,47 @@ export class CalendarComponent implements OnInit {
     });
 
     //* Adding Dates For Prev Month
+    const prev = [];
     for (let i = firstDay; i > 0; i--) {
-      arr.unshift(new DateCell());
+      const newDateCell = new DateCell();
+      newDateCell.date = new Date(
+        this.curDate.getFullYear(),
+        this.curDate.getMonth(),
+        1 - i
+      );
+      newDateCell.isCurrentMonth = false;
+      prev.push(newDateCell);
     }
+    arr = prev.concat(arr);
     //* Adding Dates For Next Month
+    const next = [];
     for (let j = 42 - arr.length; j > 0; j--) {
-      arr.push(new DateCell());
+      const newDateCell = new DateCell();
+      newDateCell.date = new Date(
+        this.curDate.getFullYear(),
+        this.curDate.getMonth(),
+        j
+      );
+      newDateCell.isCurrentMonth = false;
+      next.push(newDateCell);
     }
+    this.dates = arr.concat(next.reverse());
 
-    this.dates = arr;
+    this.calendarService.getDataForMonth(this.curDate).subscribe(
+      (res) => {
+        console.log("output:", res);
+        res.forEach((dc) => {
+          const dateCell = arr.find(
+            (obj) =>
+              new Date(obj.date).getTime() === new Date(dc.date).getTime()
+          );
+          dateCell.taskCount = dc.taskCount;
+        });
+      },
+      (err) => {
+        console.log("error:", err);
+      }
+    );
   }
 
   changeDate(direction: string) {
@@ -63,10 +96,17 @@ export class CalendarComponent implements OnInit {
     this.renderCalendar();
   }
 
-  constructor() {}
+  constructor(
+    private calendarService: CalendarService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.curDate = new Date();
     this.renderCalendar();
+  }
+
+  redirect(date: Date) {
+    this.router.navigate(["/calendar/" + date.toISOString()]);
   }
 }

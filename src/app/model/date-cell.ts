@@ -3,4 +3,5 @@ export class DateCell {
   taskCount: number;
   eventCount: number;
   holidayCount: number;
+  isCurrentMonth: boolean;
 }
