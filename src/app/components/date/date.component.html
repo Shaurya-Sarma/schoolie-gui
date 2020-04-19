@@ -8,9 +8,13 @@
     <h4 class="date-page__heading">
       Tasks
     </h4>
-    <button>
-      +
-    </button>
+    <mat-icon
+      class="date-page__btn"
+      matRipple
+      [matRippleColor]="'rgba(0,0,0,0.1)'"
+      (click)="openDialog()"
+      >add</mat-icon
+    >
   </div>
   <div class="date-page__tasks" *ngIf="tasksForDay$; else NoTasks">
     <div class="date-page__task" *ngFor="let task of tasksForDay$ | async">
@@ -41,16 +45,23 @@
     <h4 class="date-page__heading">
       Events
     </h4>
-    <button>
-      +
-    </button>
+    <mat-icon
+      class="date-page__btn"
+      matRipple
+      [matRippleColor]="'rgba(0,0,0,0.1)'"
+      (click)="openDialog()"
+      >add</mat-icon
+    >
   </div>
   <div class="date-page__subtitle">
-    <h4 class="date-page__heading">
-      Holidays
-    </h4>
-    <button>
-      +
-    </button>
+    <h4 class="date-page__heading">Holidays</h4>
+
+    <mat-icon
+      class="date-page__btn"
+      matRipple
+      [matRippleColor]="'rgba(0,0,0,0.1)'"
+      (click)="openDialog()"
+      >add</mat-icon
+    >
   </div>
-</app-header>
+</div>

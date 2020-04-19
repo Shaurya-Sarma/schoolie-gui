@@ -15,13 +15,12 @@
   &__date {
     font-weight: 500;
     font-size: 2rem;
-    background-color: #2d9cdb;
-    color: #ffffff;
     border-radius: 6px;
     padding: 10px 25px;
   }
   &__subtitle {
     display: flex;
+    justify-content: space-between;
     align-items: center;
     margin-top: 50px;
     margin-bottom: 10px;
@@ -77,10 +76,21 @@
     color: #0f2862;
   }
   &__btn {
-    display: inline-block;
-    box-shadow: none;
-    font-size: 2rem;
-    size: 80%;
-    color: #ffffff;
+    color: #000;
+    background: #c4c4c4;
+    border-radius: 50%;
+    margin-right: 10px;
+    margin-bottom: 5px;
+    padding: 5px;
+    transition: 0.4s;
+    &:hover {
+      cursor: pointer;
+      background: #2d9cdb;
+      color: #fff;
+    }
+    &::selection {
+      outline: none;
+      background: none;
+    }
   }
 }

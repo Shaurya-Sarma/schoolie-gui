@@ -29,6 +29,7 @@ import { MatToolbarModule } from "@angular/material/toolbar";
 import { CalendarComponent } from "./components/calendar/calendar.component";
 import { MatRippleModule } from "@angular/material/core";
 import { DateComponent } from "./components/date/date.component";
+import { AddActivityComponent } from "./components/add-activity/add-activity.component";
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { DateComponent } from "./components/date/date.component";
     FooterComponent,
     CalendarComponent,
     DateComponent,
+    AddActivityComponent,
   ],
   imports: [
     BrowserModule,
@@ -58,7 +60,7 @@ import { DateComponent } from "./components/date/date.component";
     MatToolbarModule,
     MatRippleModule,
   ],
-  entryComponents: [AddTaskComponent],
+  entryComponents: [AddTaskComponent, AddActivityComponent],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,

@@ -1,9 +1,10 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { TasksService } from "src/app/services/tasks.service";
-import { CalendarComponent } from "../calendar/calendar.component";
 import { SnackbarService } from "src/app/services/snackbar.service";
 import { Task } from "src/app/model/task";
+import { MatDialog } from "@angular/material/dialog";
+import { AddActivityComponent } from "../add-activity/add-activity.component";
 
 @Component({
   selector: "app-date",
@@ -17,8 +18,19 @@ export class DateComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     public tasksService: TasksService,
-    public snackbarService: SnackbarService
+    public snackbarService: SnackbarService,
+    public dialog: MatDialog
   ) {}
+
+  openDialog(date: Date): void {
+    const dialogRef = this.dialog.open(AddActivityComponent, {
+      width: "300px",
+      data: { activityDate: date },
+    });
+    dialogRef.afterClosed().subscribe((res) => {
+      if (res) this.fetch();
+    });
+  }
 
   deleteTask(task: Task) {
     this.tasksService.removeTask(task).subscribe(

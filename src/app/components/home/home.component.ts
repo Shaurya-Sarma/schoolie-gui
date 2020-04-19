@@ -5,7 +5,6 @@ import { AddTaskComponent } from "../add-task/add-task.component";
 import { SnackbarService } from "src/app/services/snackbar.service";
 import { Day } from "src/app/model/day";
 import { Task } from "src/app/model/task";
-import { Router } from "@angular/router";
 
 export interface DialogData {
   taskDate: Date;
