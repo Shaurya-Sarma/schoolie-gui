@@ -37,7 +37,6 @@ export class HomeComponent implements OnInit {
   constructor(
     private tasksService: TasksService,
     public dialog: MatDialog,
-    private router: Router,
     private snackbarService: SnackbarService
   ) {}
 

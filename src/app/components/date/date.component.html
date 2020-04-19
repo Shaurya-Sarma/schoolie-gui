@@ -1,1 +1,56 @@
-<p>date works!</p>
+<app-header></app-header>
+<div class="date-page__container">
+  <div class="date-page__header">
+    <h1 class="date-page__title">My Activities:</h1>
+    <h2 class="date-page__date">{{ date | date: "MM/dd/yyyy" }}</h2>
+  </div>
+  <div class="date-page__subtitle">
+    <h4 class="date-page__heading">
+      Tasks
+    </h4>
+    <button>
+      +
+    </button>
+  </div>
+  <div class="date-page__tasks" *ngIf="tasksForDay$; else NoTasks">
+    <div class="date-page__task" *ngFor="let task of tasksForDay$ | async">
+      <mat-checkbox
+        [checked]="task.completed"
+        (change)="updateTask(task)"
+        class="date-page__checkbox"
+        color="primary"
+        >{{ task.name }}
+        <p class="date-page__subject">{{ task.subject }}</p>
+      </mat-checkbox>
+
+      <mat-icon class="date-page__delete" (click)="deleteTask(task)"
+        >delete</mat-icon
+      >
+    </div>
+  </div>
+  <ng-template #NoTasks>
+    <div
+      class="date-page__tasks--none"
+      style="margin: 20px 0 0 20px; color: #414346;"
+    >
+      No Tasks are on your agenda for today.
+    </div>
+  </ng-template>
+
+  <div class="date-page__subtitle">
+    <h4 class="date-page__heading">
+      Events
+    </h4>
+    <button>
+      +
+    </button>
+  </div>
+  <div class="date-page__subtitle">
+    <h4 class="date-page__heading">
+      Holidays
+    </h4>
+    <button>
+      +
+    </button>
+  </div>
+</app-header>
