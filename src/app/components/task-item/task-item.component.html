@@ -1,0 +1,13 @@
+<div class="task-item__task">
+  <mat-checkbox
+    [checked]="task.completed"
+    (change)="updateTask(task)"
+    class="task-item__checkbox"
+    color="primary"
+    >{{ task.name }}
+    <p class="task-item__subject">{{ task.subject }}</p>
+  </mat-checkbox>
+  <mat-icon class="task-item__delete" (click)="deleteTask(task)"
+    >delete</mat-icon
+  >
+</div>

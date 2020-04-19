@@ -16,7 +16,6 @@
     font-weight: 500;
     font-size: 2rem;
     border-radius: 6px;
-    padding: 10px 25px;
   }
   &__subtitle {
     display: flex;
@@ -40,43 +39,9 @@
     }
   }
 
-  &__task {
-    transition: 0.4s;
-    display: flex;
-    padding: 15px;
-    &:hover {
-      background-color: #f2f2f2;
-      .date-page__delete {
-        transition: 0.4s;
-        padding: 2px;
-        opacity: 1;
-        &:hover {
-          filter: saturate(200%);
-        }
-      }
-    }
-  }
-  &__delete {
-    transition: 0.4s;
-    opacity: 0;
-    position: absolute;
-    right: 0;
-    margin-right: 65px;
-    color: #eb5757;
-    &:hover {
-      cursor: pointer;
-    }
-  }
-
-  &__subject {
-    display: inline;
-    text-transform: capitalize;
-    font-weight: 500;
-    margin: 0 10px;
-    color: #0f2862;
-  }
   &__btn {
     color: #000;
+    transform: scale(0.9);
     background: #c4c4c4;
     border-radius: 50%;
     margin-right: 10px;

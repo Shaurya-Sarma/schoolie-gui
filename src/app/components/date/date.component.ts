@@ -2,9 +2,12 @@ import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { TasksService } from "src/app/services/tasks.service";
 import { SnackbarService } from "src/app/services/snackbar.service";
-import { Task } from "src/app/model/task";
 import { MatDialog } from "@angular/material/dialog";
-import { AddActivityComponent } from "../add-activity/add-activity.component";
+import { AddTaskComponent } from "../add-task/add-task.component";
+
+export interface DialogData {
+  taskDate: Date;
+}
 
 @Component({
   selector: "app-date",
@@ -22,57 +25,34 @@ export class DateComponent implements OnInit {
     public dialog: MatDialog
   ) {}
 
-  openDialog(date: Date): void {
-    const dialogRef = this.dialog.open(AddActivityComponent, {
+  openDialogTask(date: Date): void {
+    const dialogRef = this.dialog.open(AddTaskComponent, {
       width: "300px",
-      data: { activityDate: date },
+      data: { taskDate: date },
     });
     dialogRef.afterClosed().subscribe((res) => {
       if (res) this.fetch();
     });
   }
 
-  deleteTask(task: Task) {
-    this.tasksService.removeTask(task).subscribe(
-      (res: string) => {
-        console.log("task deleted");
-        if (res) this.fetch();
-        this.snackbarService.openSnackBar("Task Deleted Successfully!", {
-          panelClass: "snackBar--success",
-          duration: 2000,
-        });
-      },
-      (err: string) => {
-        console.log("error", err);
-        this.snackbarService.openSnackBar(
-          "Something happened. Please try again",
-          {
-            panelClass: "snackBar--error",
-            duration: 2000,
-          }
-        );
-      }
-    );
+  openDialogEvent(date: Date): void {
+    const dialogRef = this.dialog.open(AddTaskComponent, {
+      width: "300px",
+      data: { taskDate: date },
+    });
+    dialogRef.afterClosed().subscribe((res) => {
+      if (res) this.fetch();
+    });
   }
 
-  updateTask(task: Task) {
-    task.completed = !task.completed;
-    this.tasksService.updateTask(task).subscribe(
-      (res: string) => {
-        console.log("update", res);
-        this.snackbarService.openSnackBar("Task Updated Successfully!", {
-          panelClass: "snackBar--success",
-          duration: 1000,
-        });
-      },
-      (err: string) => {
-        console.log("err", err);
-        this.snackbarService.openSnackBar("Update Failed.", {
-          panelClass: "snackBar--error",
-          duration: 1000,
-        });
-      }
-    );
+  openDialogHoliday(date: Date): void {
+    const dialogRef = this.dialog.open(AddTaskComponent, {
+      width: "300px",
+      data: { taskDate: date },
+    });
+    dialogRef.afterClosed().subscribe((res) => {
+      if (res) this.fetch();
+    });
   }
 
   ngOnInit() {
@@ -80,7 +60,6 @@ export class DateComponent implements OnInit {
       this.date = params["date"];
     });
     this.fetch();
-    console.log(this.tasksForDay$);
   }
 
   fetch() {

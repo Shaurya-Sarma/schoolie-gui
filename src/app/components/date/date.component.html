@@ -12,25 +12,16 @@
       class="date-page__btn"
       matRipple
       [matRippleColor]="'rgba(0,0,0,0.1)'"
-      (click)="openDialog()"
+      (click)="openDialogTask(date)"
       >add</mat-icon
     >
   </div>
   <div class="date-page__tasks" *ngIf="tasksForDay$; else NoTasks">
-    <div class="date-page__task" *ngFor="let task of tasksForDay$ | async">
-      <mat-checkbox
-        [checked]="task.completed"
-        (change)="updateTask(task)"
-        class="date-page__checkbox"
-        color="primary"
-        >{{ task.name }}
-        <p class="date-page__subject">{{ task.subject }}</p>
-      </mat-checkbox>
-
-      <mat-icon class="date-page__delete" (click)="deleteTask(task)"
-        >delete</mat-icon
-      >
-    </div>
+    <app-task-item
+      [task]="task"
+      *ngFor="let task of tasksForDay$ | async"
+      (change)="$event === 'deleted' && fetch()"
+    ></app-task-item>
   </div>
   <ng-template #NoTasks>
     <div
@@ -49,7 +40,7 @@
       class="date-page__btn"
       matRipple
       [matRippleColor]="'rgba(0,0,0,0.1)'"
-      (click)="openDialog()"
+      (click)="openDialogEvent()"
       >add</mat-icon
     >
   </div>
@@ -60,7 +51,7 @@
       class="date-page__btn"
       matRipple
       [matRippleColor]="'rgba(0,0,0,0.1)'"
-      (click)="openDialog()"
+      (click)="openDialogHoliday()"
       >add</mat-icon
     >
   </div>
