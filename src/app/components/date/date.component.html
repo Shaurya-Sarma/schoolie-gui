@@ -20,7 +20,7 @@
     <app-task-item
       [task]="task"
       *ngFor="let task of tasksForDay$ | async"
-      (change)="$event === 'deleted' && fetch()"
+      (change)="$event === 'task__deleted' && fetch()"
     ></app-task-item>
   </div>
   <ng-template #NoTasks>
@@ -44,15 +44,21 @@
       >add</mat-icon
     >
   </div>
-  <div class="date-page__events">
-    <div class="date-page__event" *ngFor="let event of eventsForDay$ | async">
-      <p>{{ event.name }}</p>
-      <p>{{ event.location }}</p>
-      <mat-icon class="task-item__delete" (click)="deleteEvent(event)"
-        >delete</mat-icon
-      >
-    </div>
+  <div class="date-page__events" *ngIf="eventsForDay$; else NoEvents">
+    <app-event-item
+      [event]="event"
+      *ngFor="let event of eventsForDay$ | async"
+      (change)="$event === 'event__deleted' && fetch()"
+    ></app-event-item>
   </div>
+  <ng-template #NoEvents>
+    <div
+      class="date-page__events--none"
+      style="margin: 20px 0 0 20px; color: #414346;"
+    >
+      No Events are on your calendar for today.
+    </div>
+  </ng-template>
   <div class="date-page__subtitle">
     <h4 class="date-page__heading">Holidays</h4>
 
@@ -64,4 +70,19 @@
       >add</mat-icon
     >
   </div>
+  <div class="date-page__holidays" *ngIf="holidaysForDay$; else NoHolidays">
+    <app-holiday-item
+      [holiday]="holiday"
+      *ngFor="let holiday of holidaysForDay$ | async"
+      (change)="$event === 'holiday__deleted' && fetch()"
+    ></app-holiday-item>
+  </div>
+  <ng-template #NoHolidays>
+    <div
+      class="date-page__holidays--none"
+      style="margin: 20px 0 0 20px; color: #414346;"
+    >
+      No Holidays are on your calendar for today.
+    </div>
+  </ng-template>
 </div>

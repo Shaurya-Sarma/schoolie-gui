@@ -1,11 +1,11 @@
-.task-item {
-  &__task {
+.event-item {
+  &__event {
     transition: 0.4s;
     display: flex;
     padding: 15px;
     &:hover {
       background-color: #f2f2f2;
-      .task-item__delete {
+      .event-item__delete {
         transition: 0.4s;
         padding: 0;
         opacity: 1;
@@ -27,7 +27,7 @@
     }
   }
 
-  &__subject {
+  &__location {
     display: inline;
     text-transform: capitalize;
     font-weight: 500;

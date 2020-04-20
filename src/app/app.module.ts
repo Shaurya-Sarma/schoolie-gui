@@ -32,6 +32,8 @@ import { DateComponent } from "./components/date/date.component";
 import { TaskItemComponent } from "./components/task-item/task-item.component";
 import { AddEventComponent } from "./components/add-event/add-event.component";
 import { AddHolidayComponent } from "./components/add-holiday/add-holiday.component";
+import { EventItemComponent } from "./components/event-item/event-item.component";
+import { HolidayItemComponent } from "./components/holiday-item/holiday-item.component";
 
 @NgModule({
   declarations: [
@@ -47,6 +49,8 @@ import { AddHolidayComponent } from "./components/add-holiday/add-holiday.compon
     TaskItemComponent,
     AddEventComponent,
     AddHolidayComponent,
+    EventItemComponent,
+    HolidayItemComponent,
   ],
   imports: [
     BrowserModule,

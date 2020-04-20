@@ -24,7 +24,7 @@ export class TaskItemComponent implements OnInit {
     this.tasksService.removeTask(task).subscribe(
       (res: string) => {
         console.log("task deleted");
-        if (res) this.change.emit("deleted");
+        if (res) this.change.emit("task__deleted");
         this.snackbarService.openSnackBar("Task Deleted Successfully!", {
           panelClass: "snackBar--success",
           duration: 2000,

@@ -1,0 +1,9 @@
+<div class="event-item__event">
+  <p class="event-item__info">
+    {{ event.name
+    }}<span class="event-item__location">{{ event.location }}</span>
+  </p>
+  <mat-icon class="event-item__delete" (click)="deleteEvent(event)"
+    >close</mat-icon
+  >
+</div>

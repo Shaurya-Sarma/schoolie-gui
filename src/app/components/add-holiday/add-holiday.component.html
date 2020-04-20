@@ -1,1 +1,30 @@
-<p>add-holiday works!</p>
+<form [formGroup]="addHolidayForm" class="addHoliday__form">
+  <h1 mat-dialog-title class="addHoliday__title">Add New Holiday</h1>
+  <div mat-dialog-content class="addHoliday__content">
+    <p class="addHoliday__subtitle">Is today a special day?</p>
+    <mat-form-field class="addHoliday__form-field">
+      <mat-label class="addHoliday__label">Description</mat-label>
+      <mat-error *ngIf="holidayName.invalid">This field is required</mat-error>
+      <input matInput class="addHoliday__text" formControlName="holidayName" />
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions class="addHoliday__buttons">
+    <button
+      mat-button
+      color="warn"
+      class="addHoliday__cancel"
+      (click)="onNoClick()"
+    >
+      Cancel
+    </button>
+    <button
+      mat-flat-button
+      color="primary"
+      class="addHoliday__submit"
+      [disabled]="addHolidayForm.invalid"
+      (click)="createHoliday()"
+    >
+      Create Event
+    </button>
+  </div>
+</form>
