@@ -40,9 +40,18 @@
       class="date-page__btn"
       matRipple
       [matRippleColor]="'rgba(0,0,0,0.1)'"
-      (click)="openDialogEvent()"
+      (click)="openDialogEvent(date)"
       >add</mat-icon
     >
+  </div>
+  <div class="date-page__events">
+    <div class="date-page__event" *ngFor="let event of eventsForDay$ | async">
+      <p>{{ event.name }}</p>
+      <p>{{ event.location }}</p>
+      <mat-icon class="task-item__delete" (click)="deleteEvent(event)"
+        >delete</mat-icon
+      >
+    </div>
   </div>
   <div class="date-page__subtitle">
     <h4 class="date-page__heading">Holidays</h4>
@@ -51,7 +60,7 @@
       class="date-page__btn"
       matRipple
       [matRippleColor]="'rgba(0,0,0,0.1)'"
-      (click)="openDialogHoliday()"
+      (click)="openDialogHoliday(date)"
       >add</mat-icon
     >
   </div>

@@ -57,12 +57,13 @@
   &__labels {
     padding: 5px 5px 0 0;
   }
-  &__tasks {
+  &__tasks,
+  &__events,
+  &__holidays {
     display: flex;
     flex-direction: column;
   }
   &__counter {
-    background: #fada5e;
     display: block;
     display: flex;
     justify-content: center;
@@ -77,6 +78,15 @@
     &::selection {
       color: none;
       background: none;
+    }
+    &--tasks {
+      background: #fada5e;
+    }
+    &--events {
+      background: #56ccf2;
+    }
+    &--holidays {
+      background: #eb5757;
     }
   }
 

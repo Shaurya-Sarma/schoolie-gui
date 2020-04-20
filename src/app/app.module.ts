@@ -30,8 +30,8 @@ import { CalendarComponent } from "./components/calendar/calendar.component";
 import { MatRippleModule } from "@angular/material/core";
 import { DateComponent } from "./components/date/date.component";
 import { TaskItemComponent } from "./components/task-item/task-item.component";
-import { AddEventComponent } from './add-event/add-event.component';
-import { AddHolidayComponent } from './add-holiday/add-holiday.component';
+import { AddEventComponent } from "./components/add-event/add-event.component";
+import { AddHolidayComponent } from "./components/add-holiday/add-holiday.component";
 
 @NgModule({
   declarations: [
@@ -64,7 +64,7 @@ import { AddHolidayComponent } from './add-holiday/add-holiday.component';
     MatToolbarModule,
     MatRippleModule,
   ],
-  entryComponents: [AddTaskComponent],
+  entryComponents: [AddTaskComponent, AddEventComponent, AddHolidayComponent],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,

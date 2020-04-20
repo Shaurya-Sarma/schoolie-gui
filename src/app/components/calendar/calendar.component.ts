@@ -78,7 +78,15 @@ export class CalendarComponent implements OnInit {
             (obj) =>
               new Date(obj.date).getTime() === new Date(dc.date).getTime()
           );
-          dateCell.taskCount = dc.taskCount;
+          if (dc.taskCount) {
+            dateCell.taskCount = dc.taskCount;
+          }
+          if (dc.eventCount) {
+            dateCell.eventCount = dc.eventCount;
+          }
+          if (dc.holidayCount) {
+            dateCell.holidayCount = dc.holidayCount;
+          }
         });
       },
       (err) => {
