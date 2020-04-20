@@ -30,6 +30,8 @@ import { CalendarComponent } from "./components/calendar/calendar.component";
 import { MatRippleModule } from "@angular/material/core";
 import { DateComponent } from "./components/date/date.component";
 import { TaskItemComponent } from "./components/task-item/task-item.component";
+import { AddEventComponent } from './add-event/add-event.component';
+import { AddHolidayComponent } from './add-holiday/add-holiday.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +45,8 @@ import { TaskItemComponent } from "./components/task-item/task-item.component";
     CalendarComponent,
     DateComponent,
     TaskItemComponent,
+    AddEventComponent,
+    AddHolidayComponent,
   ],
   imports: [
     BrowserModule,
