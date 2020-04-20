@@ -37,7 +37,7 @@
           <app-task-item
             [task]="task"
             *ngFor="let task of day.tasks$ | async"
-            (change)="$event === 'deleted' && fetch()"
+            (change)="$event === 'task__deleted' && fetch()"
           ></app-task-item>
         </div>
       </div>
