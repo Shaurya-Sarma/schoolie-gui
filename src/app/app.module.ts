@@ -34,6 +34,10 @@ import { AddEventComponent } from "./components/add-event/add-event.component";
 import { AddHolidayComponent } from "./components/add-holiday/add-holiday.component";
 import { EventItemComponent } from "./components/event-item/event-item.component";
 import { HolidayItemComponent } from "./components/holiday-item/holiday-item.component";
+import { NotebookComponent } from "./components/notebook/notebook.component";
+import { NotebookSidebarComponent } from "./components/notebook-sidebar/notebook-sidebar.component";
+import { NotebookMainComponent } from "./components/notebook-main/notebook-main.component";
+import { MatSidenavModule } from "@angular/material/sidenav";
 
 @NgModule({
   declarations: [
@@ -51,6 +55,9 @@ import { HolidayItemComponent } from "./components/holiday-item/holiday-item.com
     AddHolidayComponent,
     EventItemComponent,
     HolidayItemComponent,
+    NotebookComponent,
+    NotebookSidebarComponent,
+    NotebookMainComponent,
   ],
   imports: [
     BrowserModule,
@@ -67,6 +74,7 @@ import { HolidayItemComponent } from "./components/holiday-item/holiday-item.com
     MatDialogModule,
     MatToolbarModule,
     MatRippleModule,
+    MatSidenavModule,
   ],
   entryComponents: [AddTaskComponent, AddEventComponent, AddHolidayComponent],
   providers: [
