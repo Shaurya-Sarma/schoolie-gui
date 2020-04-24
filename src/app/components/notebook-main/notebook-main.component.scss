@@ -1,0 +1,17 @@
+.notebook-page {
+  &__default {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  &__art {
+    width: 35vw;
+  }
+  &__caption {
+    font-weight: 500;
+    margin: 20px 0;
+  }
+  &__action {
+    color: #ff3c3c;
+  }
+}
