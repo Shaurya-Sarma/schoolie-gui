@@ -22,4 +22,28 @@
       background: #c4c4c4;
     }
   }
+  &__menu {
+    padding: 0 20px;
+  }
+  &__search {
+    width: 100%;
+  }
+  &__form-field {
+    display: block;
+    margin-top: 15px;
+  }
+  &__form-icon {
+    margin-right: 6px;
+    vertical-align: bottom;
+  }
+  &__menu-icon {
+    color: #eb5757;
+    margin-right: 5px;
+  }
+  &__menu-title {
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    font-size: 0.85rem;
+  }
 }
