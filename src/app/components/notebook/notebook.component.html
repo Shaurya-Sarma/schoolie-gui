@@ -1,11 +1,11 @@
-<mat-drawer-container class="example-container" autosize>
-  <mat-drawer #drawer opened="true" class="example-sidenav" mode="side">
+<mat-drawer-container class="notebook-page__sidebar-container" autosize>
+  <mat-drawer #drawer opened="true" class="notebook-page__sidebar" mode="side">
     <app-notebook-sidebar></app-notebook-sidebar>
   </mat-drawer>
-  <div class="example-sidenav-content">
-    <button type="button" mat-button (click)="drawer.toggle()">
-      Toggle sidenav
-    </button>
+  <div class="notebook-page__sidebar-content">
+    <mat-icon class="notebook-page__maximize" (click)="drawer.toggle()">
+      maximize
+    </mat-icon>
     <app-notebook-main></app-notebook-main>
   </div>
 </mat-drawer-container>
