@@ -1,4 +1,11 @@
-<mat-sidenav-container>
-  <app-notebook-sidebar></app-notebook-sidebar>
-  <app-notebook-main></app-notebook-main>
-</mat-sidenav-container>
+<mat-drawer-container class="example-container" autosize>
+  <mat-drawer #drawer opened="true" class="example-sidenav" mode="side">
+    <app-notebook-sidebar></app-notebook-sidebar>
+  </mat-drawer>
+  <div class="example-sidenav-content">
+    <button type="button" mat-button (click)="drawer.toggle()">
+      Toggle sidenav
+    </button>
+    <app-notebook-main></app-notebook-main>
+  </div>
+</mat-drawer-container>
