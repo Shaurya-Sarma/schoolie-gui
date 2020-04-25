@@ -1,5 +1,5 @@
 <div class="notebook-page__main-container">
-  <div class="notebook-page__default">
+  <div class="notebook-page__default" *ngIf="isSelected">
     <img
       class="notebook-page__art"
       src="../../../assets/images/notes_cover.svg"
@@ -9,4 +9,12 @@
       <span class="notebook-page__action">here</span> to create a new file.
     </p>
   </div>
+  <div class="notebook-page__editor">
+    <ckeditor
+      [(ngModel)]="model.editorData"
+      [editor]="Editor"
+      (ready)="onReady($event)"
+    ></ckeditor>
+  </div>
+  <button (click)="createNote()">Click To Create Note!</button>
 </div>

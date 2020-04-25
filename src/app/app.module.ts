@@ -6,7 +6,7 @@ import { AppComponent } from "./app.component";
 import { LoginComponent } from "./components/login/login.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
-import { ReactiveFormsModule } from "@angular/forms";
+import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 import { MatButtonModule } from "@angular/material/button";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
@@ -38,6 +38,7 @@ import { NotebookComponent } from "./components/notebook/notebook.component";
 import { NotebookSidebarComponent } from "./components/notebook-sidebar/notebook-sidebar.component";
 import { NotebookMainComponent } from "./components/notebook-main/notebook-main.component";
 import { MatSidenavModule } from "@angular/material/sidenav";
+import { CKEditorModule } from "@ckeditor/ckeditor5-angular";
 
 @NgModule({
   declarations: [
@@ -64,6 +65,7 @@ import { MatSidenavModule } from "@angular/material/sidenav";
     AppRoutingModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
+    FormsModule,
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
@@ -75,6 +77,7 @@ import { MatSidenavModule } from "@angular/material/sidenav";
     MatToolbarModule,
     MatRippleModule,
     MatSidenavModule,
+    CKEditorModule,
   ],
   entryComponents: [AddTaskComponent, AddEventComponent, AddHolidayComponent],
   providers: [
