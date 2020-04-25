@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { UserService } from "./services/user.service";
 import { Router, NavigationEnd } from "@angular/router";
+import { BehaviorSubject } from "rxjs";
 
 @Component({
   selector: "app-root",
@@ -9,20 +10,18 @@ import { Router, NavigationEnd } from "@angular/router";
 })
 export class AppComponent implements OnInit {
   title = "schoolie-gui";
-  authenticated = false;
+  isAuthenticated$: BehaviorSubject<boolean>;
 
   constructor(private userService: UserService, private router: Router) {}
 
   ngOnInit() {
-    this.authenticated = this.userService.isAuthenticated();
+    this.isAuthenticated$ = this.userService.isAuthenticated$;
+    this.isAuthenticated$.next(this.userService.isAuthenticated());
     this.router.events.subscribe((e) => {
       if (e instanceof NavigationEnd) {
         console.log("router event ", e.url);
-        if (
-          (e.url === "/login" || e.url === "/register") &&
-          !!this.authenticated
-        ) {
-          this.router.navigate(["/home"]);
+        if (e.url === "/login" || e.url === "/register") {
+          this.isAuthenticated$.next(false);
         }
       }
     });

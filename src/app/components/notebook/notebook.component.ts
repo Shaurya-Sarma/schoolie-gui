@@ -6,7 +6,6 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./notebook.component.scss"],
 })
 export class NotebookComponent implements OnInit {
-  showFiller = true;
   constructor() {}
 
   ngOnInit() {}

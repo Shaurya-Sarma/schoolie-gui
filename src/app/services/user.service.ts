@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 
 import { User } from "../model/user";
-import { Observable } from "rxjs";
+import { Observable, Subject, BehaviorSubject } from "rxjs";
 import { Config } from "../config/config";
 
 import { JwtHelperService } from "@auth0/angular-jwt";
@@ -12,6 +12,8 @@ import { JwtHelperService } from "@auth0/angular-jwt";
 })
 export class UserService {
   jwtHelper = new JwtHelperService();
+
+  isAuthenticated$ = new BehaviorSubject(null);
 
   constructor(private http: HttpClient) {}
 

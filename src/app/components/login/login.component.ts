@@ -60,6 +60,7 @@ export class LoginComponent implements OnInit {
           panelClass: "snackBar--success",
           duration: 3000,
         });
+        this.userService.isAuthenticated$.next(true);
         this.router.navigate(["/home"]);
       },
       (error) => {
