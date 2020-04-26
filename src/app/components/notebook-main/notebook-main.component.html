@@ -1,5 +1,5 @@
 <div class="notebook-page__main-container">
-  <div class="notebook-page__default" *ngIf="isSelected">
+  <div class="notebook-page__default" *ngIf="!isSelected">
     <img
       class="notebook-page__art"
       src="../../../assets/images/notes_cover.svg"
@@ -9,7 +9,10 @@
       <span class="notebook-page__action">here</span> to create a new file.
     </p>
   </div>
-  <div class="notebook-page__editor">
+  <div class="notebook-page__editor" *ngIf="isSelected">
+    {{ note.name }} <br />
+    {{ note.tags }}
+    {{ note.date | date: "yyyy-mm-dd" }}
     <ckeditor
       [(ngModel)]="model.editorData"
       [editor]="Editor"

@@ -16,5 +16,10 @@
     <h4 class="notebook-page__menu-title">
       <mat-icon class="notebook-page__menu-icon">book</mat-icon>My Notebook
     </h4>
+    <div class="notebook-page__notes" *ngFor="let note of notes$ | async">
+      <div class="notebook-page__note" (click)="onSelect(note)">
+        {{ note._id }}
+      </div>
+    </div>
   </div>
 </div>
