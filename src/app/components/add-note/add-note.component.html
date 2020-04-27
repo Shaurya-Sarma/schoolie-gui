@@ -1,0 +1,30 @@
+<form [formGroup]="addNoteForm" class="addNote__form">
+  <h1 mat-dialog-title class="addNote__title">Add New Note</h1>
+  <div mat-dialog-content class="addNote__content">
+    <p class="addNote__subtitle">What do you want to write about?</p>
+    <mat-form-field class="addNote__form-field">
+      <mat-label class="addNote__label">Title</mat-label>
+      <mat-error *ngIf="noteTitle.invalid">This field is required</mat-error>
+      <input matInput class="addNote__text" formControlName="noteTitle" />
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions class="addNote__buttons">
+    <button
+      mat-button
+      color="warn"
+      class="addNote__cancel"
+      (click)="onNoClick()"
+    >
+      Cancel
+    </button>
+    <button
+      mat-flat-button
+      color="primary"
+      class="addNote__submit"
+      [disabled]="addNoteForm.invalid"
+      (click)="createNote()"
+    >
+      Create Note
+    </button>
+  </div>
+</form>

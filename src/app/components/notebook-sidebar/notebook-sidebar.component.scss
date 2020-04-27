@@ -47,7 +47,32 @@
     font-size: 0.85rem;
   }
   &__note {
-    background: #f2f2f2;
+    margin: 10px 0;
+    background: #ffffff;
     border-radius: 10px;
+    padding: 20px 10px;
+    display: flex;
+    align-items: center;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  &__selected-note {
+    border: 2px solid #2d9cdb;
+  }
+  &__note-icon {
+    padding: 5px;
+    transform: scale(1.2);
+  }
+  &__note-info {
+    margin-left: 10px;
+    font-size: 0.8rem;
+  }
+  &__note-title {
+    font-weight: 500;
+  }
+  &__note-date {
+    font-weight: 400;
+    color: #333333;
   }
 }

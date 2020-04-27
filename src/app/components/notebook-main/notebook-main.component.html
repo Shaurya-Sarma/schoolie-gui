@@ -5,19 +5,27 @@
       src="../../../assets/images/notes_cover.svg"
     />
     <p class="notebook-page__caption">
-      No file is currently selected. Click
-      <span class="notebook-page__action">here</span> to create a new file.
+      No file is currently selected. Please
+      <a class="notebook-page__action">select a file</a> to begin writing.
     </p>
   </div>
   <div class="notebook-page__editor" *ngIf="isSelected">
-    {{ note.name }} <br />
-    {{ note.tags }}
-    {{ note.date | date: "yyyy-mm-dd" }}
+    <div class="notebook-page__editor-info">
+      <h2 class="notebook-page__editor-title">{{ note.name }}</h2>
+      <h2 class="notebook-page__editor-tags">Tags: {{ note.tags }}</h2>
+    </div>
     <ckeditor
       [(ngModel)]="model.editorData"
       [editor]="Editor"
       (ready)="onReady($event)"
     ></ckeditor>
+    <button
+      mat-flat-button
+      color="primary"
+      class="notebook-page__btn"
+      (click)="saveNote(note)"
+    >
+      Save
+    </button>
   </div>
-  <button (click)="createNote()">Click To Create Note!</button>
 </div>

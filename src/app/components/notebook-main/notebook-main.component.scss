@@ -2,7 +2,7 @@
   &__default {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    margin-top: 60px;
   }
   &__art {
     width: 35vw;
@@ -13,5 +13,26 @@
   }
   &__action {
     color: #ff3c3c;
+  }
+  &__editor {
+    width: 800px;
+    margin-top: 60px;
+  }
+  &__editor-info {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+  }
+  &__editor-title,
+  &__editor-tags {
+    font-weight: 500;
+    display: inline;
+  }
+  &__editor-title {
+    font-size: 2rem;
+  }
+  &__btn {
+    text-transform: capitalize;
+    margin-top: 20px;
   }
 }

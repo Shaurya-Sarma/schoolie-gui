@@ -23,4 +23,8 @@ export class NotesService {
   getDataForNote(note: Note): Observable<Note> {
     return this.http.get<Note>(Config.API_URL + "/notes/" + note._id);
   }
+
+  updateNote(note: Note): Observable<string> {
+    return this.http.put<string>(Config.API_URL + "/notes/", note);
+  }
 }

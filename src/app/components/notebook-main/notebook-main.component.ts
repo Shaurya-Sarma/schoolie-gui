@@ -4,6 +4,7 @@ import { Note } from "src/app/model/note";
 import { NotesService } from "src/app/services/notes.service";
 import { BehaviorSubject, Subscription } from "rxjs";
 import { switchMap, filter } from "rxjs/operators";
+import { SnackbarService } from "src/app/services/snackbar.service";
 
 @Component({
   selector: "app-notebook-main",
@@ -20,7 +21,10 @@ export class NotebookMainComponent implements OnInit, OnDestroy {
     editorData: "",
   };
 
-  constructor(private notesService: NotesService) {}
+  constructor(
+    private notesService: NotesService,
+    private snackbarService: SnackbarService
+  ) {}
 
   ngOnDestroy() {
     this.subsription.unsubscribe();
@@ -54,30 +58,23 @@ export class NotebookMainComponent implements OnInit, OnDestroy {
   //   placeholder: "Start Typing Here!",
   // };
 
-  createNote() {
-    const note = new Note();
-    note.name = "";
+  saveNote(note: Note) {
     note.data = this.model.editorData;
-    note.date;
-    this.notesService.addNote(note).subscribe((res: string) => {
-      console.log("note created", res);
-      //   this.dialogRef.close(true);
-      //   this.snackbarService.openSnackBar("Added Task Successfully!", {
-      //     panelClass: "snackBar--success",
-      //     duration: 2000,
-      //   });
-      // },
-      (error: string) => {
-        console.log("error", error);
-        // this.dialogRef.close(true);
-        // this.snackbarService.openSnackBar(
-        //   "An error occured. Please try again",
-        //   {
-        //     panelClass: "snackBar--error",
-        //     duration: 2000,
-        //   }
-        // );
-      };
-    });
+    this.notesService.updateNote(note).subscribe(
+      (res: string) => {
+        console.log("update", res);
+        this.snackbarService.openSnackBar("Note Saved Successfully!", {
+          panelClass: "snackBar--success",
+          duration: 1000,
+        });
+      },
+      (err: string) => {
+        console.log("err", err);
+        this.snackbarService.openSnackBar("Update Failed.", {
+          panelClass: "snackBar--error",
+          duration: 1000,
+        });
+      }
+    );
   }
 }

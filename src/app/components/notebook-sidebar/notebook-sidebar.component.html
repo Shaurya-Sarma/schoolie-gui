@@ -1,6 +1,12 @@
 <div class="notebook-page__shortcuts">
   <div class="notebook-page__icons">
-    <mat-icon class="notebook-page__icon">note_add</mat-icon>
+    <mat-icon
+      class="notebook-page__icon"
+      (click)="openDialogNote()"
+      matTooltip="Create A Note"
+      [matTooltipShowDelay]="1000"
+      >note_add</mat-icon
+    >
     <mat-icon class="notebook-page__icon">create_new_folder</mat-icon>
     <mat-icon class="notebook-page__icon">grade</mat-icon>
     <mat-icon class="notebook-page__icon">delete</mat-icon>
@@ -17,8 +23,20 @@
       <mat-icon class="notebook-page__menu-icon">book</mat-icon>My Notebook
     </h4>
     <div class="notebook-page__notes" *ngFor="let note of notes$ | async">
-      <div class="notebook-page__note" (click)="onSelect(note)">
-        {{ note._id }}
+      <div
+        class="notebook-page__note"
+        [ngClass]="{
+          'notebook-page__selected-note': selectedNote.id === note._id
+        }"
+        (click)="onSelect(note)"
+      >
+        <mat-icon class="notebook-page__note-icon">description</mat-icon>
+        <div class="notebook-page__note-info">
+          <p class="notebook-page__note-title">{{ note.name }}</p>
+          <p class="notebook-page__note-date">
+            {{ note.date | date: "MMMM d, y" }}
+          </p>
+        </div>
       </div>
     </div>
   </div>

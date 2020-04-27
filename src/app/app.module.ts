@@ -39,6 +39,8 @@ import { NotebookSidebarComponent } from "./components/notebook-sidebar/notebook
 import { NotebookMainComponent } from "./components/notebook-main/notebook-main.component";
 import { MatSidenavModule } from "@angular/material/sidenav";
 import { CKEditorModule } from "@ckeditor/ckeditor5-angular";
+import { AddNoteComponent } from "./components/add-note/add-note.component";
+import { MatTooltipModule } from "@angular/material/tooltip";
 
 @NgModule({
   declarations: [
@@ -59,6 +61,7 @@ import { CKEditorModule } from "@ckeditor/ckeditor5-angular";
     NotebookComponent,
     NotebookSidebarComponent,
     NotebookMainComponent,
+    AddNoteComponent,
   ],
   imports: [
     BrowserModule,
@@ -78,8 +81,14 @@ import { CKEditorModule } from "@ckeditor/ckeditor5-angular";
     MatRippleModule,
     MatSidenavModule,
     CKEditorModule,
+    MatTooltipModule,
   ],
-  entryComponents: [AddTaskComponent, AddEventComponent, AddHolidayComponent],
+  entryComponents: [
+    AddTaskComponent,
+    AddEventComponent,
+    AddHolidayComponent,
+    AddNoteComponent,
+  ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
