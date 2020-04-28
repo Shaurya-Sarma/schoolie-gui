@@ -12,10 +12,10 @@ import { SnackbarService } from "src/app/services/snackbar.service";
   styleUrls: ["./notebook-main.component.scss"],
 })
 export class NotebookMainComponent implements OnInit, OnDestroy {
-  isSelected = false;
   note: Note = new Note();
   public Editor = DecoupledEditor;
-  subsription: Subscription = new Subscription();
+  subscription: Subscription = new Subscription();
+  isSelected = false;
 
   public model = {
     editorData: "",
@@ -26,15 +26,16 @@ export class NotebookMainComponent implements OnInit, OnDestroy {
   // };
 
   constructor(
-    private notesService: NotesService,
+    public notesService: NotesService,
     private snackbarService: SnackbarService
   ) {}
 
   ngOnDestroy() {
-    this.subsription.unsubscribe();
+    console.log("DEstroyed called notebook main");
+    this.subscription.unsubscribe();
   }
   ngOnInit() {
-    this.subsription.add(
+    this.subscription.add(
       this.notesService.data$
         .pipe(
           filter((v) => v !== null),
@@ -42,10 +43,20 @@ export class NotebookMainComponent implements OnInit, OnDestroy {
         )
         .subscribe((note: Note) => {
           console.log("note received ", note);
-          this.isSelected = true;
-          this.model.editorData = note.data;
-          this.note = note;
+          if (note) {
+            this.model.editorData = note.data;
+            this.note = note;
+          } else if (!!this.notesService.reloadEditor) {
+            console.log("reloaded");
+            this.isSelected = false;
+          }
         })
+    );
+
+    this.subscription.add(
+      this.notesService.selectedNote$.subscribe(
+        (n) => (this.isSelected = !!n && !!n.id ? true : false)
+      )
     );
   }
 

@@ -74,10 +74,7 @@ export class AddNoteComponent implements OnInit {
     console.log(this.tags);
     note.name = this.noteTitle.value;
     note.data = "";
-    this.tags.forEach((tag) => {
-      console.log("TAG NAME", tag.name);
-      note.tags.push(tag.name);
-    });
+    note.tags = Object.assign(this.tags);
     note.date = new Date();
     this.notesService.addNote(note).subscribe(
       (res: string) => {

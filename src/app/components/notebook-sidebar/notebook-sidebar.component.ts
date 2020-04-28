@@ -1,22 +1,25 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, OnDestroy } from "@angular/core";
 import { FormBuilder, FormGroup } from "@angular/forms";
 import { NotesService } from "src/app/services/notes.service";
 import { Note } from "src/app/model/note";
 import { MatDialog } from "@angular/material/dialog";
 import { AddNoteComponent } from "../add-note/add-note.component";
 import { SnackbarService } from "src/app/services/snackbar.service";
+import { Subscription } from "rxjs";
 
 @Component({
   selector: "app-notebook-sidebar",
   templateUrl: "./notebook-sidebar.component.html",
   styleUrls: ["./notebook-sidebar.component.scss"],
 })
-export class NotebookSidebarComponent implements OnInit {
+export class NotebookSidebarComponent implements OnInit, OnDestroy {
   searchForm: FormGroup;
   value: string;
   notes$ = {};
-  selectedNote: { id: string } = { id: "" };
+  selectedNote: { id: string } = { id: null };
   canDelete: boolean = false;
+  subscription: Subscription = new Subscription();
+  searchTerm: string;
 
   constructor(
     private fb: FormBuilder,
@@ -27,7 +30,7 @@ export class NotebookSidebarComponent implements OnInit {
 
   openDialogNote(): void {
     const dialogRef = this.dialog.open(AddNoteComponent, {
-      width: "300px",
+      width: "350px",
     });
     dialogRef.afterClosed().subscribe((res) => {
       if (res) this.fetch();
@@ -37,6 +40,15 @@ export class NotebookSidebarComponent implements OnInit {
   ngOnInit() {
     this.searchForm = this.fb.group({});
     this.fetch();
+    this.subscription.add(
+      this.notesService.selectedNote$.subscribe(
+        (n) => (this.selectedNote.id = !!n && !!n.id ? n.id : null)
+      )
+    );
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
   fetch() {
@@ -45,8 +57,7 @@ export class NotebookSidebarComponent implements OnInit {
 
   onSelect(note: Note) {
     console.log("note selected ", note);
-    this.selectedNote = { id: note._id };
-    this.notesService.data$.next(note);
+    this.notesService.dataSub$.next(note);
   }
 
   toggleDelete() {

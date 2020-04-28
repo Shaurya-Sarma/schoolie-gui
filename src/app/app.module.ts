@@ -42,6 +42,7 @@ import { CKEditorModule } from "@ckeditor/ckeditor5-angular";
 import { AddNoteComponent } from "./components/add-note/add-note.component";
 import { MatTooltipModule } from "@angular/material/tooltip";
 import { MatChipsModule } from "@angular/material/chips";
+import { notesFilterPipe } from "./components/notebook-sidebar/notesFilter.pipe";
 
 @NgModule({
   declarations: [
@@ -63,6 +64,7 @@ import { MatChipsModule } from "@angular/material/chips";
     NotebookSidebarComponent,
     NotebookMainComponent,
     AddNoteComponent,
+    notesFilterPipe,
   ],
   imports: [
     BrowserModule,

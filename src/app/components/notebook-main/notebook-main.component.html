@@ -12,7 +12,12 @@
   <div class="notebook-page__editor" *ngIf="isSelected">
     <div class="notebook-page__editor-info">
       <h2 class="notebook-page__editor-title">{{ note.name }}</h2>
-      <h2 class="notebook-page__editor-tags">Tags: {{ note.tags }}</h2>
+      <h2 class="notebook-page__editor-tags">
+        <mat-icon class="notebook-page__tag-icon">label</mat-icon
+        ><span class="notebook-page__tag-name" *ngFor="let tag of note.tags"
+          >{{ tag.name }},</span
+        >
+      </h2>
     </div>
     <ckeditor
       [(ngModel)]="model.editorData"

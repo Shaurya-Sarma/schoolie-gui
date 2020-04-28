@@ -3,12 +3,21 @@ import { Observable, BehaviorSubject, of } from "rxjs";
 import { HttpClient } from "@angular/common/http";
 import { Config } from "../config/config";
 import { Note } from "../model/note";
+import { tap } from "rxjs/operators";
 
 @Injectable({
   providedIn: "root",
 })
 export class NotesService {
-  data$: BehaviorSubject<Note> = new BehaviorSubject(null);
+  dataSub$: BehaviorSubject<Note> = new BehaviorSubject(null);
+  data$: Observable<Note> = this.dataSub$.pipe(
+    tap((note: Note) => {
+      if (!!note) this.selectedNote$.next({ id: note._id });
+    })
+  );
+  reloadEditor: boolean = false;
+
+  selectedNote$: BehaviorSubject<{ id: string }> = new BehaviorSubject(null);
 
   constructor(private http: HttpClient) {}
 
@@ -29,6 +38,7 @@ export class NotesService {
   }
 
   removeNote(note: Note): Observable<string> {
+    this.reloadEditor = true;
     return this.http.delete<string>(
       Config.API_URL + "/notes/delete/" + note._id
     );

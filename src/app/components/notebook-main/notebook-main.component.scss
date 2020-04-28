@@ -27,9 +27,20 @@
   &__editor-tags {
     font-weight: 500;
     display: inline;
+    display: flex;
+    align-items: center;
   }
   &__editor-title {
     font-size: 2rem;
+  }
+  &__tag-icon {
+    color: #f2994a;
+  }
+  &__tag-name {
+    margin: 0 3px;
+    color: #4f4f4f;
+    font-weight: 400;
+    font-size: 0.8rem;
   }
   &__btn {
     text-transform: capitalize;
