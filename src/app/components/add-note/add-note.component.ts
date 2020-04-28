@@ -4,6 +4,12 @@ import { NotesService } from "src/app/services/notes.service";
 import { MatDialogRef } from "@angular/material/dialog";
 import { FormGroup, Validators, FormBuilder } from "@angular/forms";
 import { SnackbarService } from "src/app/services/snackbar.service";
+import { COMMA, ENTER } from "@angular/cdk/keycodes";
+import { MatChipInputEvent } from "@angular/material/chips";
+
+export interface Tag {
+  name: string;
+}
 
 @Component({
   selector: "app-add-note",
@@ -12,6 +18,12 @@ import { SnackbarService } from "src/app/services/snackbar.service";
 })
 export class AddNoteComponent implements OnInit {
   addNoteForm: FormGroup;
+  visible = true;
+  selectable = true;
+  removable = true;
+  addOnBlur = true;
+  readonly separatorKeysCodes: number[] = [ENTER, COMMA];
+  tags: Tag[] = [];
 
   constructor(
     private notesService: NotesService,
@@ -30,14 +42,42 @@ export class AddNoteComponent implements OnInit {
     });
   }
 
+  addTag(event: MatChipInputEvent): void {
+    const input = event.input;
+    const value = event.value;
+
+    // Add our fruit
+    if ((value || "").trim()) {
+      this.tags.push({ name: value.trim() });
+    }
+
+    // Reset the input value
+    if (input) {
+      input.value = "";
+    }
+  }
+
+  removeTag(tag: Tag): void {
+    const index = this.tags.indexOf(tag);
+
+    if (index >= 0) {
+      this.tags.splice(index, 1);
+    }
+  }
+
   get noteTitle() {
     return this.addNoteForm.get("noteTitle");
   }
 
   createNote() {
     const note = new Note();
+    console.log(this.tags);
     note.name = this.noteTitle.value;
     note.data = "";
+    this.tags.forEach((tag) => {
+      console.log("TAG NAME", tag.name);
+      note.tags.push(tag.name);
+    });
     note.date = new Date();
     this.notesService.addNote(note).subscribe(
       (res: string) => {

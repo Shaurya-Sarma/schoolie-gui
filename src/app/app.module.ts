@@ -41,6 +41,7 @@ import { MatSidenavModule } from "@angular/material/sidenav";
 import { CKEditorModule } from "@ckeditor/ckeditor5-angular";
 import { AddNoteComponent } from "./components/add-note/add-note.component";
 import { MatTooltipModule } from "@angular/material/tooltip";
+import { MatChipsModule } from "@angular/material/chips";
 
 @NgModule({
   declarations: [
@@ -82,6 +83,7 @@ import { MatTooltipModule } from "@angular/material/tooltip";
     MatSidenavModule,
     CKEditorModule,
     MatTooltipModule,
+    MatChipsModule,
   ],
   entryComponents: [
     AddTaskComponent,

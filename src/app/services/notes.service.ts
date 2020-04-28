@@ -27,4 +27,10 @@ export class NotesService {
   updateNote(note: Note): Observable<string> {
     return this.http.put<string>(Config.API_URL + "/notes/", note);
   }
+
+  removeNote(note: Note): Observable<string> {
+    return this.http.delete<string>(
+      Config.API_URL + "/notes/delete/" + note._id
+    );
+  }
 }

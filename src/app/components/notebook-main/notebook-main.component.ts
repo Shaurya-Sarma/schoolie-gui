@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from "@angular/core";
 import * as DecoupledEditor from "@ckeditor/ckeditor5-build-decoupled-document";
 import { Note } from "src/app/model/note";
 import { NotesService } from "src/app/services/notes.service";
-import { BehaviorSubject, Subscription } from "rxjs";
+import { Subscription } from "rxjs";
 import { switchMap, filter } from "rxjs/operators";
 import { SnackbarService } from "src/app/services/snackbar.service";
 
@@ -20,6 +20,10 @@ export class NotebookMainComponent implements OnInit, OnDestroy {
   public model = {
     editorData: "",
   };
+
+  // public config = {
+  //   placeholder: "Start Typing Here!",
+  // };
 
   constructor(
     private notesService: NotesService,
@@ -53,10 +57,6 @@ export class NotebookMainComponent implements OnInit, OnDestroy {
         editor.ui.getEditableElement()
       );
   }
-
-  // public config = {
-  //   placeholder: "Start Typing Here!",
-  // };
 
   saveNote(note: Note) {
     note.data = this.model.editorData;

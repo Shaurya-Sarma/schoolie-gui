@@ -4,6 +4,7 @@ import { NotesService } from "src/app/services/notes.service";
 import { Note } from "src/app/model/note";
 import { MatDialog } from "@angular/material/dialog";
 import { AddNoteComponent } from "../add-note/add-note.component";
+import { SnackbarService } from "src/app/services/snackbar.service";
 
 @Component({
   selector: "app-notebook-sidebar",
@@ -15,11 +16,13 @@ export class NotebookSidebarComponent implements OnInit {
   value: string;
   notes$ = {};
   selectedNote: { id: string } = { id: "" };
+  canDelete: boolean = false;
 
   constructor(
     private fb: FormBuilder,
     private notesService: NotesService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private snackbarService: SnackbarService
   ) {}
 
   openDialogNote(): void {
@@ -44,5 +47,32 @@ export class NotebookSidebarComponent implements OnInit {
     console.log("note selected ", note);
     this.selectedNote = { id: note._id };
     this.notesService.data$.next(note);
+  }
+
+  toggleDelete() {
+    this.canDelete = !this.canDelete;
+  }
+
+  deleteNote(note: Note) {
+    this.notesService.removeNote(note).subscribe(
+      (res: string) => {
+        console.log("note deleted");
+        if (res) this.fetch();
+        this.snackbarService.openSnackBar("Note Deleted Successfully!", {
+          panelClass: "snackBar--success",
+          duration: 2000,
+        });
+      },
+      (err: string) => {
+        console.log("error", err);
+        this.snackbarService.openSnackBar(
+          "Something happened. Please try again",
+          {
+            panelClass: "snackBar--error",
+            duration: 2000,
+          }
+        );
+      }
+    );
   }
 }

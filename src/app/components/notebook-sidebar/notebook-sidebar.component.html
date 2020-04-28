@@ -9,7 +9,13 @@
     >
     <mat-icon class="notebook-page__icon">create_new_folder</mat-icon>
     <mat-icon class="notebook-page__icon">grade</mat-icon>
-    <mat-icon class="notebook-page__icon">delete</mat-icon>
+    <mat-icon
+      class="notebook-page__icon"
+      (click)="toggleDelete()"
+      matTooltip="Delete Notes"
+      [matTooltipShowDelay]="1000"
+      >delete</mat-icon
+    >
   </div>
   <div class="notebook-page__menu">
     <mat-form-field class="notebook-page__form-field"
@@ -37,6 +43,15 @@
             {{ note.date | date: "MMMM d, y" }}
           </p>
         </div>
+        <mat-icon
+          [ngClass]="
+            canDelete === true
+              ? 'notebook-page__note-delete'
+              : 'notebook-page__delete-hide'
+          "
+          (click)="deleteNote(note)"
+          >remove_circle</mat-icon
+        >
       </div>
     </div>
   </div>
