@@ -6,6 +6,7 @@ import { Observable, Subject, BehaviorSubject } from "rxjs";
 import { Config } from "../config/config";
 
 import { JwtHelperService } from "@auth0/angular-jwt";
+import { MatSidenav } from "@angular/material/sidenav";
 
 @Injectable({
   providedIn: "root",

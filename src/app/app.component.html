@@ -1,2 +1,29 @@
-<app-header *ngIf="isAuthenticated$ | async"></app-header>
-<router-outlet></router-outlet>
+<app-header
+  (sideNavClicked)="sidenav.toggle()"
+  *ngIf="isAuthenticated$ | async"
+></app-header>
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav
+    #sidenav
+    autoFocus="false"
+    mode="over"
+    class="sidenav"
+    fixedInViewport="false"
+    (click)="sidenav.toggle()"
+  >
+    <a mat-button routerLink="/home" class="link"
+      ><div class="info"><mat-icon>home</mat-icon><span>Home</span></div></a
+    >
+    <a mat-button routerLink="/notebook" class="link"
+      ><div class="info"><mat-icon>notes</mat-icon><span>Notes</span></div></a
+    >
+    <a mat-button routerLink="/calendar" class="link"
+      ><div class="info">
+        <mat-icon>calendar_today</mat-icon><span>Calendar</span>
+      </div></a
+    >
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div class="wrapper"><router-outlet></router-outlet></div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

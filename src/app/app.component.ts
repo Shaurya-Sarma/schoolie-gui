@@ -1,7 +1,8 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewChild } from "@angular/core";
 import { UserService } from "./services/user.service";
 import { Router, NavigationEnd } from "@angular/router";
 import { BehaviorSubject } from "rxjs";
+import { MatSidenav } from "@angular/material/sidenav";
 
 @Component({
   selector: "app-root",
@@ -11,8 +12,9 @@ import { BehaviorSubject } from "rxjs";
 export class AppComponent implements OnInit {
   title = "schoolie-gui";
   isAuthenticated$: BehaviorSubject<boolean>;
+  private sidenav: MatSidenav;
 
-  constructor(private userService: UserService, private router: Router) {}
+  constructor(public userService: UserService, private router: Router) {}
 
   ngOnInit() {
     this.isAuthenticated$ = this.userService.isAuthenticated$;

@@ -1,0 +1,24 @@
+.footer {
+  &__container {
+    background-color: #1b1e23;
+    width: 100%;
+    padding: 20px 0;
+  }
+  &__links {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+  }
+  &__link {
+    color: #f7f7f7;
+    text-decoration: none;
+    margin: 0 10px;
+    transition: 0.4s;
+    &:hover {
+      color: #fff;
+    }
+  }
+  &__signature {
+    color: #f7f7f7;
+  }
+}

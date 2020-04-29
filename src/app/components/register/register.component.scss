@@ -13,6 +13,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-bottom: 50px;
   }
   &__title {
     font-weight: 500;
@@ -25,7 +26,7 @@
     width: 30vw;
     margin-bottom: 25px;
     @media only screen and (max-width: 1000px) {
-      width: 40vw;
+      width: 350px;
     }
   }
   &__form-label {
@@ -47,7 +48,7 @@
     color: #fff;
     transition: filter 0.5s;
     @media only screen and (max-width: 1000px) {
-      width: 40vw;
+      width: 350px;
     }
     &:hover {
       filter: saturate(130%);

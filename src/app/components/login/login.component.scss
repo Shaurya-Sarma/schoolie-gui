@@ -20,6 +20,7 @@
     text-align: center;
     flex-direction: column;
     justify-content: center;
+    margin-bottom: 50px;
   }
   &__form-label {
     font-weight: 500;
@@ -29,7 +30,7 @@
     width: 30vw;
     margin-bottom: 10px;
     @media only screen and (max-width: 1000px) {
-      width: 40vw;
+      width: 350px;
     }
   }
   &__form-icon {
@@ -67,7 +68,7 @@
     color: #fff;
     transition: filter 0.4s;
     @media only screen and (max-width: 1000px) {
-      width: 40vw;
+      width: 350px;
     }
     &:hover {
       filter: saturate(130%);

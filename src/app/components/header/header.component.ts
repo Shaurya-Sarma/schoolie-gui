@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Output, EventEmitter } from "@angular/core";
 import { Router } from "@angular/router";
 import { UserService } from "src/app/services/user.service";
 
@@ -8,12 +8,16 @@ import { UserService } from "src/app/services/user.service";
   styleUrls: ["./header.component.scss"],
 })
 export class HeaderComponent implements OnInit {
-  public isMenuOpen: boolean = false;
+  // isMenuOpen: boolean = false;
 
-  constructor(private router: Router, private userService: UserService) {}
+  constructor(private router: Router, public userService: UserService) {}
 
-  onSidenavClick(): void {
-    this.isMenuOpen = false;
+  @Output()
+  sideNavClicked = new EventEmitter<string>();
+
+  toggleSidenav() {
+    this.sideNavClicked.emit("");
+    // this.isMenuOpen = !this.isMenuOpen;
   }
 
   redirect(link: string) {

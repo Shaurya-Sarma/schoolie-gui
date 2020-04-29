@@ -2,3 +2,26 @@ body {
   margin: 0;
   padding: 0;
 }
+
+@media only screen and (max-width: 800px) {
+  .sidenav-container {
+    flex: 1;
+    .sidenav {
+      min-width: 240px;
+      .link {
+        display: block;
+        padding: 6px 24px;
+        width: 100%;
+        text-align: left;
+        .info {
+          display: flex;
+          align-items: center;
+          vertical-align: middle;
+          mat-icon {
+            margin-right: 5px;
+          }
+        }
+      }
+    }
+  }
+}

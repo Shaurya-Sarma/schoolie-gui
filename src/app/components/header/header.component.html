@@ -1,5 +1,8 @@
 <mat-toolbar class="header__toolbar">
-  <span class="header__title">Schoolie</span>
+  <span class="header__title">
+    <mat-icon class="header__menu" (click)="toggleSidenav()">menu</mat-icon
+    >Schoolie</span
+  >
   <div class="header__links">
     <div class="header__navigation">
       <a
@@ -25,29 +28,6 @@
         >Calendar</a
       >
     </div>
-    <button mat-button class="header__menu" (click)="sidenav.toggle()">
-      <mat-icon>{{ isMenuOpen ? "menu_open" : "menu" }}</mat-icon>
-    </button>
     <a class="header__link" id="logout" (click)="onLogout()">Logout</a>
   </div>
 </mat-toolbar>
-
-<mat-sidenav-container class="sidenav-container">
-  <mat-sidenav
-    #sidenav
-    autoFocus="false"
-    mode="over"
-    [(opened)]="isMenuOpen"
-    class="sidenav"
-    (click)="onSidenavClick()"
-  >
-    <a mat-button routerLink="/home" class="link">Home</a>
-    <a mat-button routerLink="/notebook" class="link">Notes</a>
-    <a mat-button routerLink="/calendar" class="link">Calendar</a>
-  </mat-sidenav>
-  <mat-sidenav-content>
-    <div class="wrapper">
-      <router-outlet></router-outlet>
-    </div>
-  </mat-sidenav-content>
-</mat-sidenav-container>
