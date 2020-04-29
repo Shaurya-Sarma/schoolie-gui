@@ -1,6 +1,9 @@
 :host {
   display: grid;
   grid-template-columns: 2fr 1fr;
+  @media only screen and (max-width: 1000px) {
+    grid-template-columns: 1fr;
+  }
 }
 
 .register-page {
@@ -21,6 +24,9 @@
     display: block;
     width: 30vw;
     margin-bottom: 25px;
+    @media only screen and (max-width: 1000px) {
+      width: 40vw;
+    }
   }
   &__form-label {
     font-weight: 500;
@@ -39,7 +45,10 @@
     padding: 2px 0;
     width: 30vw;
     color: #fff;
-    transition: 0.5s;
+    transition: filter 0.5s;
+    @media only screen and (max-width: 1000px) {
+      width: 40vw;
+    }
     &:hover {
       filter: saturate(130%);
     }
@@ -64,5 +73,8 @@
   }
   &__art {
     height: 100vh;
+    @media only screen and (max-width: 1000px) {
+      display: none;
+    }
   }
 }
