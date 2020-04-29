@@ -1,7 +1,8 @@
 .notebook-page {
+  &__main-container {
+    text-align: center;
+  }
   &__default {
-    display: flex;
-    flex-direction: column;
     margin-top: 60px;
   }
   &__art {

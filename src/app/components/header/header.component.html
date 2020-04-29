@@ -2,33 +2,33 @@
   <span class="header__title">Schoolie</span>
   <div class="header__links">
     <div class="header__navigation">
-      <span
+      <a
         class="header__link"
         [routerLink]="['/home']"
         routerLinkActive="header__link-active"
         (click)="redirect('/home')"
-        >Home</span
+        >Home</a
       >
-      <span
+      <a
         class="header__link"
         [routerLink]="['/notebook']"
         routerLinkActive="header__link-active"
         (click)="redirect('/notebook')"
-        >Notes</span
+        >Notes</a
       >
 
-      <span
+      <a
         class="header__link"
         [routerLink]="['/calendar']"
         routerLinkActive="header__link-active"
         (click)="redirect('/calendar')"
-        >Calendar</span
+        >Calendar</a
       >
     </div>
     <button mat-button class="header__menu" (click)="sidenav.toggle()">
       <mat-icon>{{ isMenuOpen ? "menu_open" : "menu" }}</mat-icon>
     </button>
-    <span class="header__link" id="logout" (click)="onLogout()">Logout</span>
+    <a class="header__link" id="logout" (click)="onLogout()">Logout</a>
   </div>
 </mat-toolbar>
 
@@ -41,12 +41,12 @@
     class="sidenav"
     (click)="onSidenavClick()"
   >
-    <a mat-button routerLink="/home">Home</a>
-    <a mat-button routerLink="/notebook">Notes</a>
-    <a mat-button routerLink="/calendar">Calendar</a>
+    <a mat-button routerLink="/home" class="link">Home</a>
+    <a mat-button routerLink="/notebook" class="link">Notes</a>
+    <a mat-button routerLink="/calendar" class="link">Calendar</a>
   </mat-sidenav>
   <mat-sidenav-content>
-    <div>
+    <div class="wrapper">
       <router-outlet></router-outlet>
     </div>
   </mat-sidenav-content>
