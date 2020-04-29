@@ -8,8 +8,19 @@
   &__title {
     margin: 0 24px;
   }
+  &__navigation {
+    @media only screen and (max-width: 800px) {
+      display: none;
+    }
+  }
+  &__menu {
+    @media only screen and (min-width: 800px) {
+      display: none;
+    }
+  }
   &__links {
     display: flex;
+    align-items: center;
   }
   &__link {
     font-size: 0.9rem;
@@ -52,5 +63,21 @@
   }
   &:hover {
     color: #eb5757;
+  }
+}
+
+.sidenav-container {
+  flex: 1;
+  .sidenav {
+    min-width: 240px;
+    a {
+      display: block;
+      padding: 6px 24px;
+      width: 100%;
+      text-align: left;
+    }
+  }
+  div {
+    padding: 18px 24px;
   }
 }

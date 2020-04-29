@@ -1,27 +1,53 @@
 <mat-toolbar class="header__toolbar">
   <span class="header__title">Schoolie</span>
   <div class="header__links">
-    <span
-      class="header__link"
-      [routerLink]="['/home']"
-      routerLinkActive="header__link-active"
-      (click)="redirect('/home')"
-      >Home</span
-    >
-    <span
-      class="header__link"
-      [routerLink]="['/notebook']"
-      routerLinkActive="header__link-active"
-      (click)="redirect('/notebook')"
-      >Notes</span
-    >
-    <span
-      class="header__link"
-      [routerLink]="['/calendar']"
-      routerLinkActive="header__link-active"
-      (click)="redirect('/calendar')"
-      >Calendar</span
-    >
+    <div class="header__navigation">
+      <span
+        class="header__link"
+        [routerLink]="['/home']"
+        routerLinkActive="header__link-active"
+        (click)="redirect('/home')"
+        >Home</span
+      >
+      <span
+        class="header__link"
+        [routerLink]="['/notebook']"
+        routerLinkActive="header__link-active"
+        (click)="redirect('/notebook')"
+        >Notes</span
+      >
+
+      <span
+        class="header__link"
+        [routerLink]="['/calendar']"
+        routerLinkActive="header__link-active"
+        (click)="redirect('/calendar')"
+        >Calendar</span
+      >
+    </div>
+    <button mat-button class="header__menu" (click)="sidenav.toggle()">
+      <mat-icon>{{ isMenuOpen ? "menu_open" : "menu" }}</mat-icon>
+    </button>
     <span class="header__link" id="logout" (click)="onLogout()">Logout</span>
   </div>
 </mat-toolbar>
+
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav
+    #sidenav
+    autoFocus="false"
+    mode="over"
+    [(opened)]="isMenuOpen"
+    class="sidenav"
+    (click)="onSidenavClick()"
+  >
+    <a mat-button routerLink="/home">Home</a>
+    <a mat-button routerLink="/notebook">Notes</a>
+    <a mat-button routerLink="/calendar">Calendar</a>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div>
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

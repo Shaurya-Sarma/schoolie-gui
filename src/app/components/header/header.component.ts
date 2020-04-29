@@ -8,7 +8,13 @@ import { UserService } from "src/app/services/user.service";
   styleUrls: ["./header.component.scss"],
 })
 export class HeaderComponent implements OnInit {
+  public isMenuOpen: boolean = false;
+
   constructor(private router: Router, private userService: UserService) {}
+
+  onSidenavClick(): void {
+    this.isMenuOpen = false;
+  }
 
   redirect(link: string) {
     this.router.navigate([link]);
