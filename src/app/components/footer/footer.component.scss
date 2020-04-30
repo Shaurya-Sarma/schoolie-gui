@@ -1,8 +1,10 @@
 .footer {
   &__container {
-    background-color: #1b1e23;
+    background-color: #e4e4e4;
     width: 100%;
     padding: 20px 0;
+    bottom: 0px;
+    position: relative;
   }
   &__links {
     display: flex;
@@ -10,15 +12,15 @@
     text-align: center;
   }
   &__link {
-    color: #f7f7f7;
+    color: #333333;
     text-decoration: none;
     margin: 0 10px;
     transition: 0.4s;
     &:hover {
-      color: #fff;
+      color: #000000;
     }
   }
   &__signature {
-    color: #f7f7f7;
+    color: #333333;
   }
 }
