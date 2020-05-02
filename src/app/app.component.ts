@@ -3,6 +3,7 @@ import { UserService } from "./services/user.service";
 import { Router, NavigationEnd } from "@angular/router";
 import { BehaviorSubject } from "rxjs";
 import { MatSidenav } from "@angular/material/sidenav";
+import { Configuration } from "./config/config";
 
 @Component({
   selector: "app-root",
@@ -12,7 +13,7 @@ import { MatSidenav } from "@angular/material/sidenav";
 export class AppComponent implements OnInit {
   title = "schoolie-gui";
   isAuthenticated$: BehaviorSubject<boolean>;
-  private sidenav: MatSidenav;
+  isInitialized = false;
 
   constructor(public userService: UserService, private router: Router) {}
 
@@ -27,5 +28,20 @@ export class AppComponent implements OnInit {
         }
       }
     });
+    this.loadConfig();
+  }
+
+  loadConfig() {
+    console.log("initializing user");
+    this.userService.getConfig().subscribe(
+      (res: Configuration) => {
+        this.isInitialized = true;
+        console.log("setting api url ", this.userService.getApiUrl());
+      },
+      (error) => {
+        this.isInitialized = true;
+        console.log("error loading config ", error);
+      }
+    );
   }
 }
