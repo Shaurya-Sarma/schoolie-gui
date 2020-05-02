@@ -8,6 +8,10 @@ import { AddEventComponent } from "../add-event/add-event.component";
 import { AddHolidayComponent } from "../add-holiday/add-holiday.component";
 import { EventsService } from "src/app/services/events.service";
 import { HolidaysService } from "src/app/services/holidays.service";
+import { Task } from "src/app/model/task";
+import { Observable, ObservableLike } from "rxjs";
+import { Holiday } from "src/app/model/holiday";
+import { Event } from "src/app/model/event";
 
 export interface DialogDataActivity {
   activityDate: Date;
@@ -20,9 +24,9 @@ export interface DialogDataActivity {
 })
 export class DateComponent implements OnInit {
   date: Date;
-  tasksForDay$ = {};
-  eventsForDay$ = {};
-  holidaysForDay$ = {};
+  tasksForDay$: Observable<Task[]>;
+  eventsForDay$: Observable<Event[]>;
+  holidaysForDay$: Observable<Holiday[]>;
 
   constructor(
     private route: ActivatedRoute,

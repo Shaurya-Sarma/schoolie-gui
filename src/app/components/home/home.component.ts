@@ -5,6 +5,7 @@ import { AddTaskComponent } from "../add-task/add-task.component";
 import { SnackbarService } from "src/app/services/snackbar.service";
 import { Day } from "src/app/model/day";
 import { Task } from "src/app/model/task";
+import { Observable } from "rxjs";
 
 export interface DialogData {
   taskDate: Date;
@@ -21,7 +22,7 @@ export class HomeComponent implements OnInit {
 
   curDate = new Date();
   curHour = this.curDate.getHours();
-  daysForWeek$ = {};
+  daysForWeek$: Observable<Day[]>;
 
   colors: Array<String> = [
     "#173F5F",

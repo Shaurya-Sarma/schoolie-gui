@@ -5,7 +5,7 @@ import { Note } from "src/app/model/note";
 import { MatDialog } from "@angular/material/dialog";
 import { AddNoteComponent } from "../add-note/add-note.component";
 import { SnackbarService } from "src/app/services/snackbar.service";
-import { Subscription } from "rxjs";
+import { Subscription, Observable } from "rxjs";
 
 @Component({
   selector: "app-notebook-sidebar",
@@ -15,7 +15,7 @@ import { Subscription } from "rxjs";
 export class NotebookSidebarComponent implements OnInit, OnDestroy {
   searchForm: FormGroup;
   value: string;
-  notes$ = {};
+  notes$: Observable<Note[]>;
   selectedNote: { id: string } = { id: null };
   canDelete: boolean = false;
   subscription: Subscription = new Subscription();
