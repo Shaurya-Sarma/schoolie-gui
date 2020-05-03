@@ -1,24 +1,16 @@
 //Install express server
 const express = require("express");
 const path = require("path");
-const env = process.env.API_URL || 8080;
+var sslRedirect = require("heroku-ssl-redirect");
 
 const app = express();
 
 // Serve only the static files form the dist directory
 app.use(express.static(__dirname + "/dist/schoolie-gui"));
 
-var forceSsl = function (req, res, next) {
-  if (req.headers["x-forwarded-proto"] !== "https") {
-    return res.redirect(["https://", req.get("Host"), req.url].join(""));
-  }
-  return next();
-};
+app.use(sslRedirect());
 
 app.get("/config", function (req, res) {
-  if (env === "https://schoolie-api.herokuapp.com") {
-    app.use(forceSsl);
-  }
   res.json({ api_url: process.env.API_URL });
 });
 
