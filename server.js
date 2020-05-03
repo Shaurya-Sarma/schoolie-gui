@@ -7,8 +7,12 @@ const app = express();
 // Serve only the static files form the dist directory
 app.use(express.static(__dirname + "/dist/schoolie-gui"));
 
-app.get("/config", function (req, res) {
-  res.json({ api_url: process.env.API_URL });
+app.get("/config", function (req, res, next) {
+  if (req.headers["x-forwarded-proto"] != "https") {
+    res.json({ api_url: process.env.API_URL });
+  } else {
+    next();
+  }
 });
 
 app.get("/*", function (req, res) {
