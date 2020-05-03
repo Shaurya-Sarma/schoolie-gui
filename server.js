@@ -5,14 +5,15 @@ var sslRedirect = require("heroku-ssl-redirect");
 
 const app = express();
 
-// Serve only the static files form the dist directory
-app.use(express.static(__dirname + "/dist/schoolie-gui"));
-
 app.use(sslRedirect());
 
 app.get("/config", function (req, res) {
   res.json({ api_url: process.env.API_URL });
 });
+
+// Serve only the static files form the dist directory
+
+app.use(express.static(__dirname + "/dist/schoolie-gui"));
 
 app.get("/*", function (req, res) {
   res.sendFile(path.join(__dirname + "/dist/schoolie-gui/index.html"));
