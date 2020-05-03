@@ -15,13 +15,10 @@ var forceSsl = function (req, res, next) {
   return next();
 };
 
-app.configure(function () {
+app.get("/config", function (req, res) {
   if (env === "https://schoolie-api.herokuapp.com") {
     app.use(forceSsl);
   }
-});
-
-app.get("/config", function (req, res) {
   res.json({ api_url: process.env.API_URL });
 });
 
