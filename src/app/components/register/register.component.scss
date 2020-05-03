@@ -15,6 +15,13 @@
     align-items: center;
     margin-bottom: 50px;
   }
+  &__logo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 40px;
+    width: auto;
+  }
   &__title {
     font-weight: 500;
     letter-spacing: 0.01em;

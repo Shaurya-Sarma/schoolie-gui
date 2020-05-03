@@ -19,11 +19,7 @@
         >
       </h2>
     </div>
-    <ckeditor
-      [(ngModel)]="model.editorData"
-      [editor]="Editor"
-      (ready)="onReady($event)"
-    ></ckeditor>
+    <ckeditor [(ngModel)]="model.editorData" [editor]="Editor"></ckeditor>
     <button
       mat-flat-button
       color="primary"

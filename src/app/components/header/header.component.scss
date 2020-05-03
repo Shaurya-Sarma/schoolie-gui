@@ -5,6 +5,12 @@
     justify-content: space-between;
     align-items: center;
   }
+  &__logo {
+    height: 45px;
+    @media (max-width: 568px) {
+      height: 35px;
+    }
+  }
   &__title {
     margin: 0 24px;
     display: flex;
@@ -17,9 +23,11 @@
   }
   &__menu {
     padding: 5px;
-    margin-right: 10px;
     @media only screen and (min-width: 800px) {
       display: none;
+    }
+    @media (max-width: 568px) {
+      font-size: 1.5rem;
     }
     &:hover {
       cursor: pointer;
@@ -40,6 +48,9 @@
     font-weight: 500;
     transition: 0.3s ease-in-out 0s;
     text-transform: uppercase;
+    @media (max-width: 568px) {
+      margin: 0 5px;
+    }
     &-active {
       color: #c0a0ff;
     }

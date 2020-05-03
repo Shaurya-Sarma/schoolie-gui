@@ -1,8 +1,7 @@
-import { Component, OnInit, ViewChild } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { UserService } from "./services/user.service";
 import { Router, NavigationEnd } from "@angular/router";
 import { BehaviorSubject } from "rxjs";
-import { MatSidenav } from "@angular/material/sidenav";
 import { Configuration } from "./config/config";
 
 @Component({
@@ -14,6 +13,7 @@ export class AppComponent implements OnInit {
   title = "schoolie-gui";
   isAuthenticated$: BehaviorSubject<boolean>;
   isInitialized = false;
+  opened: boolean = true;
 
   constructor(public userService: UserService, private router: Router) {}
 
@@ -27,6 +27,7 @@ export class AppComponent implements OnInit {
         }
       }
     });
+
     this.loadConfig();
   }
 

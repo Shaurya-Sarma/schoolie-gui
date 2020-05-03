@@ -1,8 +1,14 @@
 <mat-drawer-container class="notebook-page__sidebar-container" autosize>
-  <mat-drawer #drawer opened="true" class="notebook-page__sidebar" mode="side">
+  <mat-drawer
+    #drawer
+    [opened]="opened"
+    [mode]="mode"
+    class="notebook-page__sidebar"
+    mode="side"
+  >
     <app-notebook-sidebar></app-notebook-sidebar>
   </mat-drawer>
-  <mat-drawer-content 
+  <mat-drawer-content
     ><div class="notebook-page__main-content">
       <mat-icon class="notebook-page__toggle" (click)="drawer.toggle()">
         swap_horizontal

@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from "@angular/core";
-import * as DecoupledEditor from "@ckeditor/ckeditor5-build-decoupled-document";
+import * as ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { Note } from "src/app/model/note";
 import { NotesService } from "src/app/services/notes.service";
 import { Subscription } from "rxjs";
@@ -13,7 +13,7 @@ import { SnackbarService } from "src/app/services/snackbar.service";
 })
 export class NotebookMainComponent implements OnInit, OnDestroy {
   note: Note = new Note();
-  public Editor = DecoupledEditor;
+  public Editor = ClassicEditor;
   subscription: Subscription = new Subscription();
   isSelected = false;
 
@@ -24,7 +24,6 @@ export class NotebookMainComponent implements OnInit, OnDestroy {
   // public config = {
   //   placeholder: "Start Typing Here!",
   // };
-
   constructor(
     public notesService: NotesService,
     private snackbarService: SnackbarService
@@ -55,15 +54,6 @@ export class NotebookMainComponent implements OnInit, OnDestroy {
         (n) => (this.isSelected = !!n && !!n.id ? true : false)
       )
     );
-  }
-
-  public onReady(editor) {
-    editor.ui
-      .getEditableElement()
-      .parentElement.insertBefore(
-        editor.ui.view.toolbar.element,
-        editor.ui.getEditableElement()
-      );
   }
 
   saveNote(note: Note) {
