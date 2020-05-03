@@ -42,7 +42,6 @@ export class AddHolidayComponent implements OnInit {
     holiday.date = this.data.activityDate;
     this.holidaysService.addHoliday(holiday).subscribe(
       (res: string) => {
-        console.log("holiday created", res);
         this.dialogRef.close(true);
         this.snackbarService.openSnackBar("Added Holiday Successfully!", {
           panelClass: "snackBar--success",
@@ -50,7 +49,6 @@ export class AddHolidayComponent implements OnInit {
         });
       },
       (error: string) => {
-        console.log("error", error);
         this.dialogRef.close(true);
         this.snackbarService.openSnackBar(
           "An error occured. Please try again",

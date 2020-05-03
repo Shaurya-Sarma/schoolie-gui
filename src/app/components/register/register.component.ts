@@ -36,8 +36,6 @@ export class RegisterComponent implements OnInit {
         [Validators.required, Validators.min(3), Validators.max(30)],
       ],
     });
-
-    this.registerForm.valueChanges.subscribe(console.log);
   }
 
   get username() {
@@ -59,7 +57,6 @@ export class RegisterComponent implements OnInit {
     user.userName = this.username.value;
     this.userService.register(user).subscribe(
       (res: string) => {
-        console.log("output of service call ", res);
         this.snackbarService.openSnackBar("Registered Successfully!", {
           panelClass: "snackBar--success",
           duration: 3000,
@@ -67,7 +64,6 @@ export class RegisterComponent implements OnInit {
         this.router.navigate(["/login"]);
       },
       (error) => {
-        console.log("error ", error);
         error.status === 409
           ? this.snackbarService.openSnackBar(
               "Email already taken. Please try again",

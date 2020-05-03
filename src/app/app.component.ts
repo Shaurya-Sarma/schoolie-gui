@@ -22,7 +22,6 @@ export class AppComponent implements OnInit {
     this.isAuthenticated$.next(this.userService.isAuthenticated());
     this.router.events.subscribe((e) => {
       if (e instanceof NavigationEnd) {
-        console.log("router event ", e.url);
         if (e.url === "/login" || e.url === "/register") {
           this.isAuthenticated$.next(false);
         }
@@ -32,15 +31,12 @@ export class AppComponent implements OnInit {
   }
 
   loadConfig() {
-    console.log("initializing user");
     this.userService.getConfig().subscribe(
       (res: Configuration) => {
         this.isInitialized = true;
-        console.log("setting api url ", this.userService.getApiUrl());
       },
       (error) => {
         this.isInitialized = true;
-        console.log("error loading config ", error);
       }
     );
   }

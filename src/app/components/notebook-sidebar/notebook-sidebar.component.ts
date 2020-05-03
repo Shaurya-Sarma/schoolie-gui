@@ -56,7 +56,6 @@ export class NotebookSidebarComponent implements OnInit, OnDestroy {
   }
 
   onSelect(note: Note) {
-    console.log("note selected ", note);
     this.notesService.dataSub$.next(note);
   }
 
@@ -67,7 +66,6 @@ export class NotebookSidebarComponent implements OnInit, OnDestroy {
   deleteNote(note: Note) {
     this.notesService.removeNote(note).subscribe(
       (res: string) => {
-        console.log("note deleted");
         if (res) this.fetch();
         this.snackbarService.openSnackBar("Note Deleted Successfully!", {
           panelClass: "snackBar--success",
@@ -75,7 +73,6 @@ export class NotebookSidebarComponent implements OnInit, OnDestroy {
         });
       },
       (err: string) => {
-        console.log("error", err);
         this.snackbarService.openSnackBar(
           "Something happened. Please try again",
           {

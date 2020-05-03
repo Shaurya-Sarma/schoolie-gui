@@ -25,7 +25,6 @@ export class HolidayItemComponent implements OnInit {
   deleteHoliday(holiday: Holiday) {
     this.holidaysService.removeHoliday(holiday).subscribe(
       (res: string) => {
-        console.log("holiday deleted");
         if (res) this.change.emit("holiday__deleted");
         this.snackbarService.openSnackBar("Holiday Deleted Successfully!", {
           panelClass: "snackBar--success",
@@ -33,7 +32,6 @@ export class HolidayItemComponent implements OnInit {
         });
       },
       (err: string) => {
-        console.log("error", err);
         this.snackbarService.openSnackBar(
           "Something happened. Please try again",
           {

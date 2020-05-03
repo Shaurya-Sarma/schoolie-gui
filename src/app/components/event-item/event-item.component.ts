@@ -25,7 +25,6 @@ export class EventItemComponent implements OnInit {
   deleteEvent(event: Event) {
     this.eventsService.removeEvent(event).subscribe(
       (res: string) => {
-        console.log("event deleted");
         if (res) this.change.emit("event__deleted");
         this.snackbarService.openSnackBar("Event Deleted Successfully!", {
           panelClass: "snackBar--success",
@@ -33,7 +32,6 @@ export class EventItemComponent implements OnInit {
         });
       },
       (err: string) => {
-        console.log("error", err);
         this.snackbarService.openSnackBar(
           "Something happened. Please try again",
           {

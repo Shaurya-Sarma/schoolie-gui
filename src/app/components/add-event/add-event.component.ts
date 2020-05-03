@@ -46,10 +46,8 @@ export class AddEventComponent {
     event.name = this.eventName.value;
     event.location = this.eventLocation.value;
     event.date = this.data.activityDate;
-    console.log(event.date);
     this.eventsService.addEvent(event).subscribe(
       (res: string) => {
-        console.log("event created", res);
         this.dialogRef.close(true);
         this.snackbarService.openSnackBar("Added Event Successfully!", {
           panelClass: "snackBar--success",
@@ -57,7 +55,6 @@ export class AddEventComponent {
         });
       },
       (error: string) => {
-        console.log("error", error);
         this.dialogRef.close(true);
         this.snackbarService.openSnackBar(
           "An error occured. Please try again",

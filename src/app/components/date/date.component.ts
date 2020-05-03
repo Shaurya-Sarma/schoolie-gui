@@ -71,7 +71,6 @@ export class DateComponent implements OnInit {
       this.date = params["date"];
     });
     this.fetch();
-    console.log("tasks", this.tasksForDay$);
   }
 
   fetch() {

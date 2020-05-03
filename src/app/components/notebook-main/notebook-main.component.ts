@@ -31,7 +31,6 @@ export class NotebookMainComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnDestroy() {
-    console.log("DEstroyed called notebook main");
     this.subscription.unsubscribe();
   }
   ngOnInit() {
@@ -42,12 +41,10 @@ export class NotebookMainComponent implements OnInit, OnDestroy {
           switchMap((n) => this.notesService.getDataForNote(n))
         )
         .subscribe((note: Note) => {
-          console.log("note received ", note);
           if (note) {
             this.model.editorData = note.data;
             this.note = note;
           } else if (!!this.notesService.reloadEditor) {
-            console.log("reloaded");
             this.isSelected = false;
           }
         })
@@ -73,14 +70,12 @@ export class NotebookMainComponent implements OnInit, OnDestroy {
     note.data = this.model.editorData;
     this.notesService.updateNote(note).subscribe(
       (res: string) => {
-        console.log("update", res);
         this.snackbarService.openSnackBar("Note Saved Successfully!", {
           panelClass: "snackBar--success",
           duration: 1000,
         });
       },
       (err: string) => {
-        console.log("err", err);
         this.snackbarService.openSnackBar("Update Failed.", {
           panelClass: "snackBar--error",
           duration: 1000,

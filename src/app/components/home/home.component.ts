@@ -53,7 +53,6 @@ export class HomeComponent implements OnInit {
   deleteTask(task: Task) {
     this.tasksService.removeTask(task).subscribe(
       (res: string) => {
-        console.log("task deleted");
         if (res) this.fetch();
         this.snackbarService.openSnackBar("Task Deleted Successfully!", {
           panelClass: "snackBar--success",
@@ -61,7 +60,6 @@ export class HomeComponent implements OnInit {
         });
       },
       (err: string) => {
-        console.log("error", err);
         this.snackbarService.openSnackBar(
           "Something happened. Please try again",
           {
@@ -77,14 +75,12 @@ export class HomeComponent implements OnInit {
     task.completed = !task.completed;
     this.tasksService.updateTask(task).subscribe(
       (res: string) => {
-        console.log("update", res);
         this.snackbarService.openSnackBar("Task Updated Successfully!", {
           panelClass: "snackBar--success",
           duration: 1000,
         });
       },
       (err: string) => {
-        console.log("err", err);
         this.snackbarService.openSnackBar("Update Failed.", {
           panelClass: "snackBar--error",
           duration: 1000,

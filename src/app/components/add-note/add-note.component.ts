@@ -71,14 +71,12 @@ export class AddNoteComponent implements OnInit {
 
   createNote() {
     const note = new Note();
-    console.log(this.tags);
     note.name = this.noteTitle.value;
     note.data = "";
     note.tags = Object.assign(this.tags);
     note.date = new Date();
     this.notesService.addNote(note).subscribe(
       (res: string) => {
-        console.log("note created", res);
         this.dialogRef.close(true);
         this.snackbarService.openSnackBar("Created Note Successfully!", {
           panelClass: "snackBar--success",
@@ -86,7 +84,6 @@ export class AddNoteComponent implements OnInit {
         });
       },
       (error: string) => {
-        console.log("error", error);
         this.dialogRef.close(true);
         this.snackbarService.openSnackBar(
           "An error occured. Please try again",

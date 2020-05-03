@@ -72,7 +72,6 @@ export class CalendarComponent implements OnInit {
 
     this.calendarService.getDataForMonth(this.curDate).subscribe(
       (res) => {
-        console.log("output:", res);
         res.forEach((dc) => {
           const dateCell = arr.find(
             (obj) =>
@@ -89,9 +88,7 @@ export class CalendarComponent implements OnInit {
           }
         });
       },
-      (err) => {
-        console.log("error:", err);
-      }
+      (err) => {}
     );
   }
 

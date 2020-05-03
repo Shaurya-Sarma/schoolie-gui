@@ -48,7 +48,6 @@ export class AddTaskComponent {
     task.date = this.data.taskDate;
     this.tasksService.addTask(task).subscribe(
       (res: string) => {
-        console.log("task created", res);
         this.dialogRef.close(true);
         this.snackbarService.openSnackBar("Added Task Successfully!", {
           panelClass: "snackBar--success",
@@ -56,7 +55,6 @@ export class AddTaskComponent {
         });
       },
       (error: string) => {
-        console.log("error", error);
         this.dialogRef.close(true);
         this.snackbarService.openSnackBar(
           "An error occured. Please try again",

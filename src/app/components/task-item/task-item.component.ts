@@ -23,7 +23,6 @@ export class TaskItemComponent implements OnInit {
   deleteTask(task: Task) {
     this.tasksService.removeTask(task).subscribe(
       (res: string) => {
-        console.log("task deleted");
         if (res) this.change.emit("task__deleted");
         this.snackbarService.openSnackBar("Task Deleted Successfully!", {
           panelClass: "snackBar--success",
@@ -31,7 +30,6 @@ export class TaskItemComponent implements OnInit {
         });
       },
       (err: string) => {
-        console.log("error", err);
         this.snackbarService.openSnackBar(
           "Something happened. Please try again",
           {
@@ -47,7 +45,6 @@ export class TaskItemComponent implements OnInit {
     task.completed = !task.completed;
     this.tasksService.updateTask(task).subscribe(
       (res: string) => {
-        console.log("update", res);
         if (res) this.change.emit("updated");
         this.snackbarService.openSnackBar("Task Updated Successfully!", {
           panelClass: "snackBar--success",
@@ -55,7 +52,6 @@ export class TaskItemComponent implements OnInit {
         });
       },
       (err: string) => {
-        console.log("err", err);
         this.snackbarService.openSnackBar("Update Failed.", {
           panelClass: "snackBar--error",
           duration: 1000,

@@ -33,8 +33,6 @@ export class LoginComponent implements OnInit {
         ],
       ],
     });
-
-    this.loginForm.valueChanges.subscribe(console.log);
   }
 
   get email() {
@@ -53,7 +51,6 @@ export class LoginComponent implements OnInit {
     this.error = false;
     this.userService.login(user).subscribe(
       (res: User) => {
-        console.log("output of login call ", res);
         localStorage.setItem("user", res.userName);
         localStorage.setItem("token", res.token);
         this.snackbarService.openSnackBar("Login Successful!", {
@@ -64,7 +61,6 @@ export class LoginComponent implements OnInit {
         this.router.navigate(["/home"]);
       },
       (error) => {
-        console.log("Error:", error);
         error.status === 401
           ? this.snackbarService.openSnackBar(
               "Invalid Password. Please try again",
