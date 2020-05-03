@@ -9,6 +9,9 @@
     font-size: 2rem;
     margin: 0;
     font-weight: 500;
+    @media (min-width: 376px) and (max-width: 800px) {
+      font-size: 1.75rem;
+    }
   }
   &__date {
     margin: 0;
@@ -31,11 +34,23 @@
   &__display {
     display: flex;
     flex-direction: row;
+    @media (max-width: 800px) {
+      flex-direction: column;
+    }
   }
 
   &__sidebar {
     display: flex;
     flex-direction: column;
+
+    @media (max-width: 375px) {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    @media (min-width: 376px) and (max-width: 800px) {
+      flex-direction: row;
+      align-items: center;
+    }
   }
 
   &__day {
@@ -51,6 +66,9 @@
   &__day-of-week {
     font-weight: 500;
     font-size: 2.7rem;
+    @media (min-width: 376px) and (max-width: 800px) {
+      font-size: 2.3rem;
+    }
   }
 
   &__info-date {
@@ -64,12 +82,14 @@
     &--none {
       margin-right: 20px;
     }
+    @media (max-width: 800px) {
+      margin: 0;
+    }
   }
 
   &__task {
     transition: 0.4s;
     display: flex;
-    padding: 15px;
     &:hover {
       background-color: #f2f2f2;
       .home-page__delete {
@@ -110,5 +130,10 @@
     width: 130px;
     text-transform: uppercase;
     border-radius: 4px;
+    @media (min-width: 376px) and (max-width: 800px) {
+      margin: 0 0 0 20px;
+      width: 110px;
+      font-size: 0.9rem;
+    }
   }
 }

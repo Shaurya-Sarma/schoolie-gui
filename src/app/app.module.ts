@@ -43,6 +43,7 @@ import { AddNoteComponent } from "./components/add-note/add-note.component";
 import { MatTooltipModule } from "@angular/material/tooltip";
 import { MatChipsModule } from "@angular/material/chips";
 import { notesFilterPipe } from "./components/notebook-sidebar/notesFilter.pipe";
+import { LayoutModule } from "@angular/cdk/layout";
 
 @NgModule({
   declarations: [
@@ -86,6 +87,7 @@ import { notesFilterPipe } from "./components/notebook-sidebar/notesFilter.pipe"
     CKEditorModule,
     MatTooltipModule,
     MatChipsModule,
+    LayoutModule,
   ],
   entryComponents: [
     AddTaskComponent,

@@ -33,18 +33,18 @@
         <div class="calendar-page__labels">
           <div class="calendar-page__tasks" *ngIf="dateCell.taskCount">
             <span class="calendar-page__counter calendar-page__counter--tasks"
-              >Tasks ({{ dateCell.taskCount }})</span
+              >Tasks:{{ dateCell.taskCount }}</span
             >
           </div>
           <div class="calendar-page__events" *ngIf="dateCell.eventCount">
             <span class="calendar-page__counter calendar-page__counter--events"
-              >Events ({{ dateCell.eventCount }})</span
+              >Events:{{ dateCell.eventCount }}</span
             >
           </div>
           <div class="calendar-page__holidays" *ngIf="dateCell.holidayCount">
             <span
               class="calendar-page__counter calendar-page__counter--holidays"
-              >Holidays ({{ dateCell.holidayCount }})</span
+              >Holidays:{{ dateCell.holidayCount }}</span
             >
           </div>
         </div>

@@ -23,4 +23,10 @@
   &__signature {
     color: #333333;
   }
+  &__link,
+  &__signature {
+    @media only screen and (max-width: 568px) {
+      font-size: 0.75rem;
+    }
+  }
 }

@@ -1,7 +1,11 @@
 <div class="event-item__event">
   <p class="event-item__info">
-    {{ event.name
-    }}<span class="event-item__location">{{ event.location }}</span>
+    <span
+      class="event-item__name"
+      style="white-space: pre-wrap; word-break: break-word;"
+      >{{ event.name }}</span
+    >
+    <span class="event-item__location">{{ event.location }}</span>
   </p>
   <mat-icon class="event-item__delete" (click)="deleteEvent(event)"
     >close</mat-icon

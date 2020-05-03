@@ -4,8 +4,13 @@
     (change)="updateTask(task)"
     class="task-item__checkbox"
     color="primary"
-    >{{ task.name }}
-    <p class="task-item__subject">{{ task.subject }}</p>
+    ><div
+      class="task-item__checkbox-info"
+      style="white-space: pre-wrap; word-break: break-word;"
+    >
+      <span class="task-item__name">{{ task.name }}</span>
+      <p class="task-item__subject">{{ task.subject }}</p>
+    </div>
   </mat-checkbox>
   <mat-icon class="task-item__delete" (click)="deleteTask(task)"
     >delete</mat-icon

@@ -6,7 +6,6 @@ import { Observable, Subject, BehaviorSubject } from "rxjs";
 import { Config, Configuration } from "../config/config";
 
 import { JwtHelperService } from "@auth0/angular-jwt";
-import { MatSidenav } from "@angular/material/sidenav";
 import { tap } from "rxjs/operators";
 
 @Injectable({
@@ -14,7 +13,7 @@ import { tap } from "rxjs/operators";
 })
 export class UserService {
   jwtHelper = new JwtHelperService();
-  private api_url = "localhost:4000";
+  private api_url = "http://localhost:4000";
   public isInitialized = false;
 
   isAuthenticated$ = new BehaviorSubject(null);

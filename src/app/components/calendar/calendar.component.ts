@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { DateCell } from "src/app/model/date-cell";
 import { CalendarService } from "src/app/services/calendar.service";
 import { Router } from "@angular/router";
+import { BreakpointObserver, BreakpointState } from "@angular/cdk/layout";
 
 @Component({
   selector: "app-calendar",
@@ -62,7 +63,7 @@ export class CalendarComponent implements OnInit {
       const newDateCell = new DateCell();
       newDateCell.date = new Date(
         this.curDate.getFullYear(),
-        this.curDate.getMonth(),
+        this.curDate.getMonth() + 1,
         j
       );
       newDateCell.isCurrentMonth = false;
@@ -103,12 +104,20 @@ export class CalendarComponent implements OnInit {
 
   constructor(
     private calendarService: CalendarService,
-    private router: Router
+    private router: Router,
+    private breakpointObserver: BreakpointObserver
   ) {}
 
   ngOnInit() {
     this.curDate = new Date();
     this.renderCalendar();
+    this.breakpointObserver
+      .observe(["(max-width: 800px)"])
+      .subscribe((state: BreakpointState) => {
+        if (state.matches) {
+          this.daysOfWeek = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"];
+        }
+      });
   }
 
   redirect(date: Date) {
