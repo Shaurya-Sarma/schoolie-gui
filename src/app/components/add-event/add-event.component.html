@@ -14,14 +14,6 @@
   </div>
   <div mat-dialog-actions class="addEvent__buttons">
     <button
-      mat-button
-      color="warn"
-      class="addEvent__cancel"
-      (click)="onNoClick()"
-    >
-      Cancel
-    </button>
-    <button
       mat-flat-button
       color="primary"
       class="addEvent__submit"
@@ -29,6 +21,14 @@
       (click)="createEvent()"
     >
       Create Event
+    </button>
+    <button
+      mat-button
+      color="warn"
+      class="addEvent__cancel"
+      (click)="onNoClick()"
+    >
+      Cancel
     </button>
   </div>
 </form>

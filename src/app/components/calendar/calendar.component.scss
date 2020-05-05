@@ -1,13 +1,13 @@
 .calendar-page {
   &__container {
-    background-color: #f1f1f1;
+    max-width: 1080px;
+    margin: auto;
     width: 100%;
     overflow: hidden;
     position: relative;
   }
   &__title {
     display: flex;
-    background-color: #ffffff;
     justify-content: space-around;
     vertical-align: middle;
     padding: 25px 0;
@@ -76,7 +76,7 @@
     border-radius: 5px;
     margin: 1px 0;
     padding: 2px 10px;
-    font-size: 0.55rem;
+    font-size: 0.6rem;
     font-weight: 500;
     @media (max-width: 800px) {
       padding: 2px 4px;

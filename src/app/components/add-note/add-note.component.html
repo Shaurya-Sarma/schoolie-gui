@@ -30,21 +30,22 @@
   </div>
   <div mat-dialog-actions class="addNote__buttons">
     <button
+      mat-flat-button
+      color="primary"
+      class="addNote__submit"
+      type="submit"
+      [disabled]="addNoteForm.invalid"
+      (click)="createNote()"
+    >
+      Create Note
+    </button>
+    <button
       mat-button
       color="warn"
       class="addNote__cancel"
       (click)="onNoClick()"
     >
       Cancel
-    </button>
-    <button
-      mat-flat-button
-      color="primary"
-      class="addNote__submit"
-      [disabled]="addNoteForm.invalid"
-      (click)="createNote()"
-    >
-      Create Note
     </button>
   </div>
 </form>

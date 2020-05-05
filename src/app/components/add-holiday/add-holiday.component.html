@@ -10,21 +10,23 @@
   </div>
   <div mat-dialog-actions class="addHoliday__buttons">
     <button
+      mat-flat-button
+      color="primary"
+      class="addHoliday__submit"
+      [disabled]="addHolidayForm.invalid"
+      type="submit"
+      (keyup.enter)="createHoliday()"
+      (click)="createHoliday()"
+    >
+      Create Event
+    </button>
+    <button
       mat-button
       color="warn"
       class="addHoliday__cancel"
       (click)="onNoClick()"
     >
       Cancel
-    </button>
-    <button
-      mat-flat-button
-      color="primary"
-      class="addHoliday__submit"
-      [disabled]="addHolidayForm.invalid"
-      (click)="createHoliday()"
-    >
-      Create Event
     </button>
   </div>
 </form>

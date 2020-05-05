@@ -15,21 +15,22 @@
   </div>
   <div mat-dialog-actions class="addTask__buttons">
     <button
+      mat-flat-button
+      color="primary"
+      class="addTask__submit"
+      type="submit"
+      [disabled]="addTaskForm.invalid"
+      (click)="createTask()"
+    >
+      Create Task
+    </button>
+    <button
       mat-button
       color="warn"
       class="addTask__cancel"
       (click)="onNoClick()"
     >
       Cancel
-    </button>
-    <button
-      mat-flat-button
-      color="primary"
-      class="addTask__submit"
-      [disabled]="addTaskForm.invalid"
-      (click)="createTask()"
-    >
-      Create Task
     </button>
   </div>
 </form>

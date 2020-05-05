@@ -1,10 +1,10 @@
 import { Component, OnInit, OnDestroy } from "@angular/core";
-import * as ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { Note } from "src/app/model/note";
 import { NotesService } from "src/app/services/notes.service";
 import { Subscription } from "rxjs";
 import { switchMap, filter } from "rxjs/operators";
 import { SnackbarService } from "src/app/services/snackbar.service";
+import * as ClassicEditor from "src/assets/js/ckeditor.js";
 
 @Component({
   selector: "app-notebook-main",
