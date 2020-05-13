@@ -2,12 +2,9 @@
   &__default {
     display: flex;
     justify-content: center;
+    margin-top: 60px;
     flex-direction: column;
     align-items: center;
-    vertical-align: middle;
-    @media (max-width: 800px) {
-      margin-top: 60px;
-    }
   }
   &__art {
     width: 400px;
@@ -24,12 +21,12 @@
   }
   &__editor {
     width: 650px;
-    margin-top: 60px;
+    margin: 60px 0;
     @media (max-width: 1000px) {
-      width: 475px;
+      width: 450px;
     }
     @media (max-width: 568px) {
-      width: 390px;
+      width: 340px;
     }
   }
   &__editor-info {
