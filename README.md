@@ -14,7 +14,7 @@ There were be many features to come such as:
   
 ## Mobile
 
-Schoolie has a responsive and fluid layotu so that it is accessible on smaller screens. Furthermore, Schoolie will be released as an app on the Google Play Store (as of now). 
+Schoolie has a responsive and fluid layout so that it is accessible on smaller screens. Furthermore, Schoolie will be released as an app on the Google Play Store (as of now). 
 
 ## Extra Information
 
